@@ -37,4 +37,4 @@ README.md|txt
 
 ## Licence
 -------------
-- Ubuntu 64bit
+- GNU GPL-3.0 license
