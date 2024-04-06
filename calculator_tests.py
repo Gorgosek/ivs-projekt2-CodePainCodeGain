@@ -1,4 +1,4 @@
-# calcLib_tests.py
+# calculator_tests.py
 # Projekt IVS2
 # Autor: Novotný Tadeáš, xnovott00
 # Datum: 2024-04-06
