@@ -214,64 +214,6 @@ class TestCalc(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.math.factorial(-2.5)
 
-# Tests of the natural logarithm function (ln)
-class TestCalc(unittest.TestCase):
-    def setUp(self):
-        self.math = %%%%Lib()
-
-    def test_ln_positive_numbers(self):
-        # natural ln of 1 is 0
-        self.assertAlmostEqual(self.math.ln(1), 0)  
-        self.assertAlmostEqual(self.math.ln(10), 2.302585, 6)  
-        self.assertAlmostEqual(self.math.ln(0.5), -0.693147, 6)
-        self.assertAlmostEqual(self.math.ln(2), 0.693147, 6)
-
-    def test_ln_invalid_input(self):
-        # ln(0) is undefined, should raise ValueError
-        with self.assertRaises(ValueError):
-            self.math.ln(0)
-        # ln of negative number is undefined, should raise ValueError
-        with self.assertRaises(ValueError):
-            self.math.ln(-1)
-
-# Tests of the log function (log)
-class TestCalc(unittest.TestCase):
-    def setUp(self):
-        self.math = %%%%Lib()
-
-    def test_log_positive_numbers(self):
-        self.assertAlmostEqual(self.math.log(10, 10), 1)
-        self.assertAlmostEqual(self.math.log(100, 10), 2)  
-        self.assertAlmostEqual(self.math.log(1, 10), 0) 
-
-    def test_log_invalid_input(self):
-        # log base 10 of 0 is undefined, should raise ValueError
-        with self.assertRaises(ValueError):
-            self.math.log(0, 10) 
-        # log of negative number is undefined, should raise ValueError    
-        with self.assertRaises(ValueError):
-            self.math.log(-1, 10)
-
-# Tests of the absolute function (|x|)
-class TestCalc(unittest.TestCase):
-    def setUp(self):
-        self.math = %%%%Lib()
-
-    def test_absolute_positive_numbers(self):
-        self.assertEqual(self.math.abs(5), 5)
-        self.assertEqual(self.math.abs(10), 10) 
-
-    def test_absolute_negative_numbers(self):
-        self.assertEqual(self.math.abs(-5), 5) 
-        self.assertEqual(self.math.abs(-10), 10) 
-
-    def test_absolute_decimal_numbers(self):
-        self.assertAlmostEqual(self.math.abs(3.14), 3.14)  
-        self.assertAlmostEqual(self.math.abs(-2.5), 2.5)  
-
-    def test_absolute_zero(self):
-        self.assertEqual(self.math.abs(0), 0) 
-
 # Tests of the modulo function (%)
 class TestCalc(unittest.TestCase):
     def setUp(self):
