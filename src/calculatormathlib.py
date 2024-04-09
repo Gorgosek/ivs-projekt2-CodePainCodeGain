@@ -8,10 +8,7 @@
 #
 # @section description_calculatormathlib Description
 # - Math library with all functions used by the calculator
-#   (+, -, *, /, ^, 2√, n√, %)
-#
-# @section todo_calculatormathlib TODO
-# Add functions - sub, mul, div, pow, mod
+#   (+, -, *, /, ^2, ^n, 2√, n√, !, %)
 #
 # @section author_calculatormathlib Author(s)
 # xnovott00, xhajekp00
@@ -35,12 +32,68 @@ class CalculatorMathLib:
         return a + b
     
     #-
+    @staticmethod
+    def sub(a, b):
+        """! Function to compute a difference of two numbers.
+
+        @param a First number to be subtracted from.
+        @param b Second number to be subtracted.
+
+        @return Difference between the two numbers.
+        """
+        return a - b
 
     #*
+    @staticmethod
+    def multiply(a, b):
+        """! Function to compute a multiple of two numbers.
+
+        @param a First number to be multiplied.
+        @param b Second number to be multiplied.
+
+        @return Multiple of the two numbers.
+        """
+        return round(a * b, 10)
 
     #/
+    @staticmethod
+    def div(a, b):
+        """! Function to divide two numbers.
 
-    #^
+        @param a Dividend.
+        @param b Divisor.
+
+        @return Quotient.
+        @exception Raises ValueError if 'b' is zero - can't divide by zero.
+        """
+        if (b == 0):
+            raise ValueError('ValueError')
+        return round(a / b, 10)
+
+
+    #^2
+    @staticmethod
+    def pow2(a):
+        """! Function to compute a second power of a number.
+
+        @param a Number to compute the second power of.
+
+        @return Second power of the number.
+        """
+        return round(a * a, 10)
+
+    #^n
+    @staticmethod
+    def pow(a, n):
+        """! Function to compute a Nth power of a number.
+
+        @param a Base number.
+        @param n Exponent.
+
+        @return Nth power of given number.
+        """
+        return round(a ** n, 10)
+
 
     #2√
     @staticmethod
@@ -50,10 +103,10 @@ class CalculatorMathLib:
         @param a Number to compute the square root of.
 
         @return Square root of given number.
-        @return ValueError if given number is negative.
+        @exception Raises ValueError if given number is negative.
         """
         if (a < 0):
-            return ValueError('ValueError')
+            raise ValueError('ValueError')
         else:
             return round(a**0.5, 10)
         
@@ -66,10 +119,10 @@ class CalculatorMathLib:
         @param n Number representing Nth root.
 
         @return Nth root of given number.
-        @return Returns ValueError if "n" is even and "a" is negative.
+        @exception Raises ValueError if 'n' is even and 'a' is negative.
         """
         if (n%2 == 0) and (a < 0):
-            return ValueError('ValueError')
+            raise ValueError('ValueError')
         else:
             return round(a**(1/n), 10)
 
@@ -81,13 +134,30 @@ class CalculatorMathLib:
         @param a Number to compute the factorial of.
 
         @return Returns factorial of given number.
-        @return ValueError if given number isn't integer or if it is negative.
+        @exception Raises ValueError if given number isn't integer.
+        @exception Raises ValueError if given number is negative.
         """
         if type(a) != int or a < 0:
-            return ValueError('ValueError')
+            raise ValueError('ValueError')
         if a == 0 or a == 1:
             return 1
         else:
             return a * CalculatorMathLib.factorial(a-1)
         
     #%
+    @staticmethod
+    def modulo(a, b):
+        """! Function to compute a remainder after dividing two numbers.
+
+        @param a First number to be divided.
+        @param b Second number to be divided by.
+
+        @return Remainder after division of the two numbers.
+        @exception Raises ValueError if the numbers aren't integers.
+        @exception Raises ValueError if 'b' is zero - can't divide by zero.
+        """
+        if (type(a) != int) and (type(b) != int):
+            raise ValueError('ValueError')
+        if (b == 0):
+            raise ValueError('ValueError')
+        return a % b
