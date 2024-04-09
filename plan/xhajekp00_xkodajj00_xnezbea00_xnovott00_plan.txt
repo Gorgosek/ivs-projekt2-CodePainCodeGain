@@ -1,0 +1,70 @@
+Plán Vývoje Kalkulačky by CodePainCodeGain
+==================================
+
+Tým:
+- Frontend: xkodajj00, xnovott00
+- Backend: xhajekp00, xnezbea00
+
+Časový Plán:
+------------
+1.První setkání a specifikace aplikace: [2024-03-18]
+    - Cíl: Probrat a definovat požadavky na aplikaci, rozhraní, a funkcionalitu.
+
+2.Návrh uživatelského rozhraní (UI) a požadovaných matematických operací: [2024-03-24] 
+    - Cíl: Vytvořit návrhy uživatelského rozhraní a základní prototyp uživatelského rozhraní pro zpětnou vazbu.
+
+3.Rozvoj a schválení Mock-upů: [2024-03-27]
+    - Cíl: Finalizovat mock-upy uživatelského rozhraní a získat schválení od celého týmu.
+
+4.Vývoj základního backendu a matematické logiky: [2024-04-03]
+    - Cíl: Vyvinout a testovat základní matematické operace potřebné pro kalkulačku.
+
+5.Implementace grafického rozhraní, vytvoření Makefile + testování: [2024-04-10]
+    - Cíl: Integrace grafického rozhraní s backendem a první iterace testování celé aplikace.
+
+6.Vývoj pokročilých funkcí a jejich integrace: [2024-04-17]
+    - Cíl: Implementace pokročilých matematických funkcí a jejich integrace do aplikace.
+
+7.Testování a ladění: [2024-04-20]
+    - Cíl: Intenzivní testování všech funkcí aplikace, ladění a případná optimalizace.
+
+8.Vytvoření dokumentace a instalátoru: [2024-04-23]
+    - Cíl: Dokončení dokumentace a vytvoření instalátoru pro distribuci aplikace na Ubuntu.
+
+9.Revize a příprava na odevzdání: [2024-04-24]
+    - Cíl: Závěrečná revize aplikace, zajištění, že vše je připraveno pro odevzdání.
+
+10.Odevzdání projektu: [2024-04-25]
+    - Cíl: Odevzdat kompletní projekt včetně zdrojových kódů, dokumentace a instalátoru.
+
+Rozdělení Práce:
+-----------------
+- [xkodajj00, xnovott00] Zodpovědní za Mock-up, Funkcionalitu matematických operací, Grafické Rozhraní, Testování a Dokumentaci
+    - body: 2, 3, 4, 5, 7, 8
+- [xnezbea00, xhajekp00] Zodpovědní za Návrh implementace, Funkcionalitu matematických operací, Makefile a vytvoření Instalátoru 
+    - body: 3, 4, 5, 6, 8, 9, 10
+// Pozn.: Oba podtýmy se mohou podílet na vývoji částí za které nejsou zodpovědné tento plán pouze určuje direktivu  
+
+Komunikační Kanály:
+--------------------
+- Discord: Pro denní komunikaci a sdílení souborů.
+- Telefon: Pro okamžité upozornění na akutní události.
+- E-mail: Pro formální komunikaci a sdílení důležitých dokumentů.
+- Trello: Pro plánování úkolů a sledování postupu projektu.
+
+Pravidla Komunikace:
+---------------------
+1. Připojení do hlasového kanálu na Discordu při práci na projektu.
+2. Průběžné čtení a odpovídání na zprávy na Discordu/Emailu.
+3. Týdenní schůzky každé pondělí v 17:00, začínající od [2024-04-08], pro přezkoumání pokroku a plánování dalších kroků.
+
+Systém Pro Správu Verzí:
+-------------------------
+- GitHub: pro sdílení kódu, sledování změn a revize kódu.
+
+Unifikace Implementačních detailů:
+-----------------------------------
+- Vytvoření dokumentace kódů v angličtině.
+- Použití formátu ISO-8602 pro veškeré datumy.
+- Indentace 4 mezery
+- Pojmenovávací konvence proměnné=camelCase, funkce=lowercase_snake_case, classes/třídy=PascalCase, Konstanty=UPPERCASE_SNAKE_CASE
