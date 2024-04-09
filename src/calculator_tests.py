@@ -5,13 +5,12 @@
 
 import unittest
 
-# TODO rename %%%% to mathlib.py src
-from src.%% import %%%%
+from src.calculatormathlib import CalculatorMathLib
 
 # Tests of an addition (+)
 class TestCalc(unittest.TestCase):
     def setUp(self):
-        self.math = %%%%Lib()
+        self.math = CalculatorMathLib()
 
     def test_addition_positive_numbers(self):
         self.assertEqual(self.math.add(1, 3), 4)
@@ -40,7 +39,7 @@ class TestCalc(unittest.TestCase):
 # Tests of a subtraction (-)
 class TestCalc(unittest.TestCase):
     def setUp(self):
-        self.math = %%%%Lib()
+        self.math = CalculatorMathLib()
 
     def test_subtraction_positive_numbers(self):
         self.assertEqual(self.math.sub(1, 3), -2)
@@ -69,7 +68,7 @@ class TestCalc(unittest.TestCase):
 # Tests of a multiplication (*)
 class TestCalc(unittest.TestCase):
     def setUp(self):
-        self.math = %%%%Lib()
+        self.math = CalculatorMathLib()
 
     def test_multiplication_positive_numbers(self):
         self.assertEqual(self.math.multiply(1, 3), 3)
@@ -98,7 +97,7 @@ class TestCalc(unittest.TestCase):
 # Tests of a division (/)
 class TestCalc(unittest.TestCase):
     def setUp(self):
-        self.math = %%%%Lib()
+        self.math = CalculatorMathLib()
 
     def test_division_positive_numbers(self):
         self.assertEqual(self.math.div(25, 5), 5)
@@ -134,7 +133,7 @@ class TestCalc(unittest.TestCase):
 # Tests of the power function (^)
 class TestCalc(unittest.TestCase):
     def setUp(self):
-        self.math = %%%%Lib()
+        self.math = CalculatorMathLib()
 
     def test_power_positive_numbers(self):
         self.assertEqual(self.math.power(2, 3), 8)
@@ -161,7 +160,7 @@ class TestCalc(unittest.TestCase):
 # Tests of the root function (√)
 class TestCalc(unittest.TestCase):
     def setUp(self):
-        self.math = %%%%Lib()
+        self.math = CalculatorMathLib()
 
     def test_square_root_positive_numbers(self):
         self.assertEqual(self.math.root(25, 2), 5) 
@@ -191,7 +190,7 @@ class TestCalc(unittest.TestCase):
 # Tests of the factorial function (!)
 class TestCalc(unittest.TestCase):
     def setUp(self):
-        self.math = %%%%Lib()
+        self.math = CalculatorMathLib()
 
     def test_factorial_positive_numbers(self):
         # Factorial of 0 is 1 by definition
@@ -217,7 +216,7 @@ class TestCalc(unittest.TestCase):
 # Tests of the modulo function (%)
 class TestCalc(unittest.TestCase):
     def setUp(self):
-        self.math = %%%%Lib()
+        self.math = CalculatorMathLib()
 
     def test_modulo_positive_numbers(self):
         self.assertEqual(self.math.modulo(10, 3), 1) 
