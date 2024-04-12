@@ -130,6 +130,21 @@ class TestCalc(unittest.TestCase):
             self.math.div(7, 0)
             self.math.div(-7, 0)
 
+# Tests of the pow2 function (^2)
+class TestCalc(unittest.TestCase):
+    def setUp(self):
+        self.math = CalculatorMathLib()
+
+    def test_power_positive_numbers(self):
+        self.assertEqual(self.math.pow2(1), 1)
+        self.assertEqual(self.math.pow2(5), 25) 
+        self.assertEqual(self.math.pow2(0), 0)
+
+    def test_power_negative_numbers(self):
+        self.assertEqual(self.math.pow2(-2), 4)
+        self.assertEqual(self.math.pow2(-7), 49)
+
+
 # Tests of the power function (^)
 class TestCalc(unittest.TestCase):
     def setUp(self):
@@ -156,6 +171,24 @@ class TestCalc(unittest.TestCase):
             self.math.power(2, 2.25)
         with self.assertRaises(ValueError):
             self.math.power(5, -0.2)
+
+
+# Tests of the sqrt function (2√)
+class TestCalc(unittest.TestCase):
+    def setUp(self):
+        self.math = CalculatorMathLib()
+
+    def test_square_root_positive_numbers(self):
+        self.assertEqual(self.math.root(25), 5) 
+        self.assertEqual(self.math.root(4), 2)
+        self.assertEqual(self.math.root(0), 0)    
+
+    # Test square root of negative numbers should raise a ValueError
+    def test_square_root_negative_numbers(self):
+        with self.assertRaises(ValueError):
+            self.math.root(-25)
+        with self.assertRaises(ValueError):
+            self.math.root(-10)  
 
 # Tests of the root function (√)
 class TestCalc(unittest.TestCase):

@@ -84,7 +84,7 @@ class CalculatorMathLib:
 
     #^n
     @staticmethod
-    def pow(a, n):
+    def power(a, n):
         """! Function to compute a Nth power of a number.
 
         @param a Base number.
