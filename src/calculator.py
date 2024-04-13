@@ -224,7 +224,7 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.pushButton_Equal, 4, 3, 1, 1)
 
         # Button: SquareRoot
-        self.pushButton_SquareRoot = QtWidgets.QPushButton(self.gridLayoutWidget, clicked=lambda: self.pressed("√"))
+        self.pushButton_SquareRoot = QtWidgets.QPushButton(self.gridLayoutWidget, clicked=lambda: self.pressed("²√"))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(15)
         sizePolicy.setVerticalStretch(14)
@@ -472,11 +472,12 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.pushButton_4, 2, 0, 1, 1)
 
         # Button: AllClear
-        self.pushButton_AllClear = QtWidgets.QPushButton(self.gridLayoutWidget, clicked=lambda: self.pressed("AC"))
+        self.pushButton_AllClear = QtWidgets.QPushButton(self.gridLayoutWidget)
+        self.pushButton_AllClear.clicked.connect(self.clear_all)
 
         # Adding a keyboard shortcut for the AC button
         shortcut_c = QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_C), self.centralwidget)
-        shortcut_c.activated.connect(lambda: self.pressed("AC"))
+        shortcut_c.activated.connect(self.clear_all)
         
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(15)
@@ -612,13 +613,14 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.pushButton_5, 2, 1, 1, 1)
 
         # Button: Delete
-        self.pushButton_Delete = QtWidgets.QPushButton(self.gridLayoutWidget, clicked=lambda: self.pressed("Delete"))
+        self.pushButton_Delete = QtWidgets.QPushButton(self.gridLayoutWidget)
+        self.pushButton_Delete.clicked.connect(self.delete)
 
         # Adding a keyboard shortcut for the delete button
         shortcut_delete = QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Backspace), self.pushButton_Delete)
-        shortcut_delete.activated.connect(lambda: self.pressed("Delete"))
+        shortcut_delete.activated.connect(self.delete)
         shortcut_delete = QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Delete), self.pushButton_Delete)
-        shortcut_delete.activated.connect(lambda: self.pressed("Delete"))
+        shortcut_delete.activated.connect(self.delete)
 
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(15)
@@ -763,12 +765,37 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-    def pressed(self, pressed):
-        if (pressed == "AC"):
-                self.label_MainLabel.setText("")
-                self.label_SecondLabel.setText("")
+        # Functionality
+    def delete(self):
+        text = self.label_SecondLabel.text()
+        
+        # If the last character is a square root or a power of 2, remove the last 2 characters
+        if text[-2:] == '²√' or text[-2:] == '^2':
+                text = text[:-2]
         else:
-             self.label_SecondLabel.setText(f'{self.label_SecondLabel.text()}{pressed}')
+                text = text[:-1]
+
+        self.label_SecondLabel.setText(text) 
+
+    def clear_all(self):
+        self.label_MainLabel.setText("")
+        self.label_SecondLabel.setText("")
+
+    def pressed(self, pressed):
+        currentText = self.label_SecondLabel.text()
+        operators = ['+', '-', '×', '÷', '^', '^2', '²√', 'n√x', '!', '%']
+        operatorsWithoutSquareRoot = ['+', '-', '×', '÷', '^', '^2', 'n√x', '!', '%']
+
+        # If the user tries to add an operator and there is nothing in the label or there is already an operator, return
+        if (pressed in operatorsWithoutSquareRoot) and (not currentText or any(op in currentText for op in operators)):
+                return
+        
+        # If the user tries to add a square root and there is already something in the label, return
+        if pressed == '²√' and currentText:
+               return
+
+
+        self.label_SecondLabel.setText(f'{currentText}{pressed}')
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
