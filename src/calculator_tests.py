@@ -5,7 +5,7 @@
 
 import unittest
 
-from src.calculatormathlib import CalculatorMathLib
+from calculatormathlib import CalculatorMathLib
 
 # Tests of an addition (+)
 class TestCalc(unittest.TestCase):
@@ -269,6 +269,6 @@ class TestCalc(unittest.TestCase):
 
     def test_modulo_decimal_numbers(self):
         self.assertAlmostEqual(self.math.modulo(10.5, 3), 1.5)
-        self.assertAlmostEqual(self.math.modulo(-10.5, 3), 0.5) 
+        self.assertAlmostEqual(self.math.modulo(-10.5, 3), 1.5) 
 
 # Additional tests, if needed
