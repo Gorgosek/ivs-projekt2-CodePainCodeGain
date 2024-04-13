@@ -156,8 +156,7 @@ class CalculatorMathLib:
         @exception Raises ValueError if the numbers aren't integers.
         @exception Raises ValueError if 'b' is zero - can't divide by zero.
         """
-        if (type(a) != int) and (type(b) != int):
-            raise ValueError('ValueError')
         if (b == 0):
             raise ValueError('ValueError')
-        return a % b
+        return round(a % b, 10)
+
