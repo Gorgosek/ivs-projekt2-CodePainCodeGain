@@ -155,16 +155,16 @@ class TestCalc(unittest.TestCase):
 
 # Tests of the sqrt function (2√)
     def test_square_root_positive_numbers(self):
-        self.assertEqual(self.calc.root(25), 5) 
-        self.assertEqual(self.calc.root(4), 2)
-        self.assertEqual(self.calc.root(0), 0)    
+        self.assertEqual(self.calc.sqrt(25), 5) 
+        self.assertEqual(self.calc.sqrt(4), 2)
+        self.assertEqual(self.calc.sqrt(0), 0)    
 
     # Test square root of negative numbers should raise a ValueError
     def test_square_root_negative_numbers(self):
         with self.assertRaises(ValueError):
-            self.calc.root(-25)
+            self.calc.sqrt(-25)
         with self.assertRaises(ValueError):
-            self.calc.root(-10)  
+            self.calc.sqrt(-10)  
 
 # Tests of the root function (√)
     def test_square_root_positive_numbers(self):
