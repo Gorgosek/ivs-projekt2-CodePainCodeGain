@@ -9,6 +9,9 @@
 
 
 ZIP_FILE = xhajekp00_xkodajj00_xnezbea00_xnovott00.zip
+INTERPRETER = python3
+PIP = pip3
+CLEAN_DIRS = __pycache__
 
 .PHONY: all test doc run pack clean profile
 
@@ -17,16 +20,16 @@ all: run
 
 # Runs the program
 run: deps
-	python calculator.py
+	$(INTERPRETER) calculator.py
 
 # Installs needed dependencies to run the program
 deps:
-	pip install -r python_requirements.txt
+	$(PIP) install -r python_requirements.txt
 
 # runs test for the calculator_mathlib
 # TODO add test for standard deviation
 test: 
-	python -m unittest calculator_tests.py
+	$(INTERPRETER) -m unittest calculator_tests.py
 
 # TODO FIGURE IT OUT add later when needed to be used
 # Specification from the assignment: "For scripting languages use to install dependencies"
@@ -45,6 +48,10 @@ pack:
 # Generates program documentation
 doc:
 	doxygen Doxyfile
+
+# Removes ./__pychache__ directory
+clean:
+	rmdir $(CLEAN_DIRS)
 
 # uses `make all` when `make` is used
 .DEFAULT_GOAL := all
