@@ -97,7 +97,7 @@ class CalculatorMathLib:
 
     #2√
     @staticmethod
-    def sqrt(a):
+    def pow2(a):
         """! Function to compute a square root of given number.
 
         @param a Number to compute the square root of.
