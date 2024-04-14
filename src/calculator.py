@@ -32,11 +32,11 @@ class Ui_MainWindow(object):
         self.gridLayout.setObjectName("gridLayout")
 
         # Button: NthRoot
-        self.pushButton_NthRoot = QtWidgets.QPushButton(self.gridLayoutWidget, clicked=lambda: self.pressed("n√x"))
+        self.pushButton_NthRoot = QtWidgets.QPushButton(self.gridLayoutWidget, clicked=lambda: self.pressed("√"))
 
         # Adding a keyboard shortcut for the nth root button
         shortcut_r = QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_R), self.pushButton_NthRoot)
-        shortcut_r.activated.connect(lambda: self.pressed("n√x"))
+        shortcut_r.activated.connect(lambda: self.pressed("√"))
 
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(15)
@@ -765,7 +765,8 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-        # Functionality
+    # Functionality
+    # Function to delete the last character in the label
     def delete(self):
         currentText = self.label_SecondLabel.text()
         
@@ -777,15 +778,17 @@ class Ui_MainWindow(object):
 
         self.label_SecondLabel.setText(currentText) 
 
+    # Function to clear all the labels
     def clear_all(self):
         self.label_MainLabel.setText("")
         self.label_SecondLabel.setText("")
 
+    # Function to add the pressed button to the label
     def pressed(self, pressed):
         currentTextInSecondLabel = self.label_SecondLabel.text()
         currentTextInMainLabel = self.label_MainLabel.text()
-        operators = ['+', '-', '×', '÷', '^', '^2', '²√', 'n√x', '!', '%']
-        operatorsWithoutSquareRoot = ['+', '-', '×', '÷', '^', '^2', 'n√x', '!', '%']
+        operators = ['+', '-', '×', '÷', '^', '^2', '²√', '√', '!', '%']
+        operatorsWithoutSquareRoot = ['+', '-', '×', '÷', '^', '^2', '√', '!', '%']
 
         # ANS for operators without square root
         if currentTextInMainLabel and pressed in operatorsWithoutSquareRoot:
@@ -823,7 +826,7 @@ class Ui_MainWindow(object):
         if (pressed in operatorsWithoutSquareRoot) and (not currentTextInSecondLabel or any(op in currentTextInSecondLabel for op in operators)):
             return
         
-        # If the user tries write something after factorial or second powe, return
+        # If the user tries write something after factorial or second power, return
         if currentTextInSecondLabel.endswith('!') or currentTextInSecondLabel.endswith('^2'):
             return
 
@@ -837,12 +840,65 @@ class Ui_MainWindow(object):
         
         self.label_SecondLabel.setText(f'{currentTextInSecondLabel}{pressed}')
 
+    # Function to solve the expression
     def solve_expression(self):
         currentTextInSecondLabel = self.label_SecondLabel.text()
-        currentTextInMainLabel = self.label_MainLabel.text()
-        operatorsForTwoNumbers = ['+', '-', '×', '÷', '^', 'n√x', '%']
-        #currentTextInSecondLabel = self.label_SecondLabel.text()
-        #self.label_MainLabel.setText(f'{currentTextInSecondLabel}')
+        operatorsForTwoNumbers = ['+', '-', '×', '÷', '^', '√', '%']
+        
+        # If there is an operator for two numbers in the label, split the label by the operator
+        for operator in operatorsForTwoNumbers:
+            if operator in currentTextInSecondLabel:
+                numList = currentTextInSecondLabel.split(operator)
+                number1 = numList[0]
+                number2 = numList[1]
+                operatorMain = operator
+        
+        # If there is a second power in the label, split the label by the second power
+        if '^2' in currentTextInSecondLabel:
+            numList = currentTextInSecondLabel.split('^2')
+            number1 = numList[0]
+            operatorMain = '^2'
+
+        # If there is a factorial in the label, split the label by the factorial
+        if '!' in currentTextInSecondLabel:
+            numList = currentTextInSecondLabel.split('!')
+            number1 = numList[0]
+            operatorMain = '!'
+
+        # If there is a square root in the label, split the label by the square root
+        if '²√' in currentTextInSecondLabel:
+            numList = currentTextInSecondLabel.split('²√')
+            number1 = numList[1]
+            operatorMain = '²√'
+
+        match operatorMain:
+            case '+':
+                #result = float(number1) + float(number2)
+                #self.label_MainLabel.setText(f'{result}')
+                return
+            case '-':
+                #result = float(number1) - float(number2)
+                #self.label_MainLabel.setText(f'{result}')
+                return
+            case '×':
+                #result = float(number1) * float(number2)
+                #self.label_MainLabel.setText(f'{result}')
+                return
+            case '÷':
+                #result = float(number1) / float(number2)
+                #self.label_MainLabel.setText(f'{result}')
+                return
+            case '^':
+                return
+            case '√':
+                return
+            case '%':
+                return
+            case '^2':
+                return
+            case '²√':
+                return
+            
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
