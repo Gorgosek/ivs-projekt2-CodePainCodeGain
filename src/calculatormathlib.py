@@ -13,13 +13,14 @@
 # @section author_calculatormathlib Author(s)
 # xnovott00, xhajekp00
 
+
 class CalculatorMathLib:
     """! Class with math functions.
 
     Class with all the math functions used by calculator.
     """
 
-    #+
+    # +
     @staticmethod
     def add(a, b):
         """! Function to compute a sum of two numbers.
@@ -30,8 +31,8 @@ class CalculatorMathLib:
         @return Sum of the two numbers.
         """
         return a + b
-    
-    #-
+
+    # -
     @staticmethod
     def sub(a, b):
         """! Function to compute a difference of two numbers.
@@ -43,7 +44,7 @@ class CalculatorMathLib:
         """
         return a - b
 
-    #*
+    # *
     @staticmethod
     def multiply(a, b):
         """! Function to compute a multiple of two numbers.
@@ -55,7 +56,7 @@ class CalculatorMathLib:
         """
         return round(a * b, 10)
 
-    #/
+    # /
     @staticmethod
     def div(a, b):
         """! Function to divide two numbers.
@@ -66,12 +67,11 @@ class CalculatorMathLib:
         @return Quotient.
         @exception Raises ValueError if 'b' is zero - can't divide by zero.
         """
-        if (b == 0):
-            raise ValueError('ValueError')
+        if b == 0:
+            raise ValueError("ValueError")
         return round(a / b, 10)
 
-
-    #^2
+    # ^2
     @staticmethod
     def pow2(a):
         """! Function to compute a second power of a number.
@@ -82,7 +82,7 @@ class CalculatorMathLib:
         """
         return round(a * a, 10)
 
-    #^n
+    # ^n
     @staticmethod
     def power(a, n):
         """! Function to compute a Nth power of a number.
@@ -92,12 +92,11 @@ class CalculatorMathLib:
 
         @return Nth power of given number.
         """
-        if (n < 0) or (type(n) != int):
-            raise ValueError('ValueError')
-        return round(a ** n, 10)
+        if (n < 0) or not (isinstance(n, int)):
+            raise ValueError("ValueError")
+        return round(a**n, 10)
 
-
-    #2√
+    # 2√
     @staticmethod
     def sqrt(a):
         """! Function to compute a square root of given number.
@@ -107,12 +106,11 @@ class CalculatorMathLib:
         @return Square root of given number.
         @exception Raises ValueError if given number is negative.
         """
-        if (a < 0):
-            raise ValueError('ValueError')
-        else:
-            return round(a**0.5, 10)
-        
-    #n√
+        if a < 0:
+            raise ValueError("ValueError")
+        return round(a**0.5, 10)
+
+    # n√
     @staticmethod
     def root(a, n):
         """! Function to compute a nth root of given number.
@@ -123,10 +121,9 @@ class CalculatorMathLib:
         @return Nth root of given number.
         @exception Raises ValueError if 'n' is even and 'a' is negative.
         """
-        if ((n%2) == 0) and (a < 0):
-            raise ValueError('ValueError')
-        else:
-            return round(a**(1/n), 10)
+        if ((n % 2) == 0) and (a < 0):
+            raise ValueError("ValueError")
+        return round(a ** (1 / n), 10)
 
     #!
     @staticmethod
@@ -139,14 +136,14 @@ class CalculatorMathLib:
         @exception Raises ValueError if given number isn't integer.
         @exception Raises ValueError if given number is negative.
         """
-        if type(a) != int or a < 0:
-            raise ValueError('ValueError')
+        if not (isinstance(a, int)) or a < 0:
+            raise ValueError("ValueError")
         if a == 0 or a == 1:
             return 1
         else:
-            return a * CalculatorMathLib.factorial(a-1)
-        
-    #%
+            return a * CalculatorMathLib.factorial(a - 1)
+
+    # %
     @staticmethod
     def modulo(a, b):
         """! Function to compute a remainder after dividing two numbers.
@@ -158,7 +155,6 @@ class CalculatorMathLib:
         @exception Raises ValueError if the numbers aren't integers.
         @exception Raises ValueError if 'b' is zero - can't divide by zero.
         """
-        if (b == 0):
-            raise ValueError('ValueError')
+        if b == 0:
+            raise ValueError("ValueError")
         return round(a % b, 10)
-
