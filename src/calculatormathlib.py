@@ -92,6 +92,8 @@ class CalculatorMathLib:
 
         @return Nth power of given number.
         """
+        if (n < 0) or (type(n) != int):
+            raise ValueError('ValueError')
         return round(a ** n, 10)
 
 
@@ -121,7 +123,7 @@ class CalculatorMathLib:
         @return Nth root of given number.
         @exception Raises ValueError if 'n' is even and 'a' is negative.
         """
-        if (n%2 == 0) and (a < 0):
+        if ((n%2) == 0) and (a < 0):
             raise ValueError('ValueError')
         else:
             return round(a**(1/n), 10)
