@@ -119,12 +119,12 @@ class TestCalc(unittest.TestCase):
             self.calc.div(-7, 0)
 
 # Tests of the pow2 function (^2)
-    def test_power_positive_numbers(self):
+    def test_pow_positive_numbers(self):
         self.assertEqual(self.calc.pow2(1), 1)
         self.assertEqual(self.calc.pow2(5), 25) 
         self.assertEqual(self.calc.pow2(0), 0)
 
-    def test_power_negative_numbers(self):
+    def test_pow_negative_numbers(self):
         self.assertEqual(self.calc.pow2(-2), 4)
         self.assertEqual(self.calc.pow2(-7), 49)
 
@@ -165,24 +165,24 @@ class TestCalc(unittest.TestCase):
             self.calc.sqrt(-10)  
 
 # Tests of the root function (√)
-    def test_square_root_positive_numbers(self):
+    def test_root_positive_numbers(self):
         self.assertEqual(self.calc.root(25, 2), 5) 
         self.assertEqual(self.calc.root(27, 3), 3)
         self.assertEqual(self.calc.root(0, 2), 0)   
 
-    def test_square_root_decimal_numbers(self):
+    def test__root_decimal_numbers(self):
         self.assertEqual(self.calc.root(0.5, 0.5), 0.25)  
         self.assertAlmostEqual(self.calc.root(125.55, 2.5), 6.91077, 4)  
 
     # Test square root of negative numbers should raise a ValueError
-    def test_square_root_negative_numbers(self):
+    def test_root_negative_numbers(self):
         with self.assertRaises(ValueError):
             self.calc.root(-25, 2)
         with self.assertRaises(ValueError):
             self.calc.root(-10, 4)  
     
     # Test square root with negative exponent should raise a ValueError
-    def test_square_root_negative_exponent(self):
+    def test_root_negative_exponent(self):
         with self.assertRaises(ValueError):
             self.calc.root(125, -2)
         with self.assertRaises(ValueError):
