@@ -788,6 +788,13 @@ class Ui_MainWindow(object):
 
     # Function to add the pressed button to the label
     def pressed(self, pressed):
+        """!Adds the pressed button to the label.
+
+        @param pressed: The value of the pressed button.
+        @type pressed: str
+
+        @return: None
+        """
         currentTextInSecondLabel = self.label_SecondLabel.text()
         currentTextInMainLabel = self.label_MainLabel.text()
         operators = ['+', '-', '×', '÷', '^', '^2', '²√', '√', '!', '%']
@@ -811,6 +818,11 @@ class Ui_MainWindow(object):
             self.label_SecondLabel.setText(f'{pressed}')
             return
         
+        if pressed == '-' and not currentTextInSecondLabel:
+            self.label_SecondLabel.setText('-')
+        elif (pressed == '-') and (currentTextInSecondLabel[-1] in operators):
+           return
+
         # Decimal point
         if pressed == '.':
             for operator in operators:
@@ -847,14 +859,17 @@ class Ui_MainWindow(object):
     def solve_expression(self):
         currentTextInSecondLabel = self.label_SecondLabel.text()
         operators = ['+', '-', '×', '÷', '^', '^2', '²√', '√', '!', '%']
+        operatorsWithoutMinus = ['+', '×', '÷', '^', '^2', '²√', '√', '!', '%']
         operatorsForTwoNumbers = ['+', '-', '×', '÷', '^', '√', '%']
         
-        if any(op in currentTextInSecondLabel for op in operators):
-            pass
-        else:
+        # If there is only number in the second label, then set the main label to the number
+        if (currentTextInSecondLabel[0] == '-' and currentTextInSecondLabel.count('-') == 1 and not any(op in currentTextInSecondLabel[1:] for op in operators)):
             self.label_MainLabel.setText(currentTextInSecondLabel)
             return
+        elif any(op in currentTextInSecondLabel for op in operatorsWithoutMinus):
+            pass
                 
+        # If there is an operator for two numbers and there is no second number, than SYNTAX ERROR
         for operator in operatorsForTwoNumbers:
             if currentTextInSecondLabel.endswith(operator):
                 self.label_SecondLabel.setText('')
@@ -863,7 +878,14 @@ class Ui_MainWindow(object):
 
         # If there is an operator for two numbers in the label, split the label by the operator
         for operator in operatorsForTwoNumbers:
-            if operator in currentTextInSecondLabel:
+            # If there is a minut at the beginning of the label, split the label by the second operator
+            if currentTextInSecondLabel[0] == '-':
+                if operator in currentTextInSecondLabel[1:]:
+                    numList = currentTextInSecondLabel[1:].split(operator)
+                    number1 = currentTextInSecondLabel[0] + numList[0]
+                    number2 = numList[1]
+                    operatorMain = operator    
+            elif operator in currentTextInSecondLabel:
                 numList = currentTextInSecondLabel.split(operator)
                 number1 = numList[0]
                 number2 = numList[1]
