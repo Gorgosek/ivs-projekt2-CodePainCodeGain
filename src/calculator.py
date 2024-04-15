@@ -849,14 +849,12 @@ class Ui_MainWindow(object):
         operators = ['+', '-', '×', '÷', '^', '^2', '²√', '√', '!', '%']
         operatorsForTwoNumbers = ['+', '-', '×', '÷', '^', '√', '%']
         
-        # If there is only number in the second label, then set the main label to the number
         if any(op in currentTextInSecondLabel for op in operators):
             pass
         else:
             self.label_MainLabel.setText(currentTextInSecondLabel)
             return
                 
-        # If there is an operator for two numbers and there is no second number, than SYNTAX ERROR
         for operator in operatorsForTwoNumbers:
             if currentTextInSecondLabel.endswith(operator):
                 self.label_SecondLabel.setText('')
