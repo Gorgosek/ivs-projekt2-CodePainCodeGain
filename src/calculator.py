@@ -785,6 +785,13 @@ class Ui_MainWindow(object):
 
     # Function to add the pressed button to the label
     def pressed(self, pressed):
+        """!Adds the pressed button to the label.
+
+        @param pressed: The value of the pressed button.
+        @type pressed: str
+
+        @return: None
+        """
         currentTextInSecondLabel = self.label_SecondLabel.text()
         currentTextInMainLabel = self.label_MainLabel.text()
         operators = ['+', '-', '×', '÷', '^', '^2', '²√', '√', '!', '%']
