@@ -798,16 +798,21 @@ class Ui_MainWindow(object):
         currentTextInSecondLabel = self.label_SecondLabel.text()
         currentTextInMainLabel = self.label_MainLabel.text()
         operators = ['+', '-', '×', '÷', '^', '^2', '²√', '√', '!', '%']
+        operatorsWithouMinus = ['+', '×', '÷', '^', '^2', '²√', '√', '!', '%']
         operatorsWithoutSquareRoot = ['+', '-', '×', '÷', '^', '^2', '√', '!', '%']
 
         # ANS for operators without square root
         if currentTextInMainLabel and pressed in operatorsWithoutSquareRoot:
+            if currentTextInMainLabel == "SYNTAX ERROR":
+                return
             self.label_SecondLabel.setText(f'{currentTextInMainLabel}{pressed}')
             self.label_MainLabel.setText("")
             return
         
         # ANS for square root
         if currentTextInMainLabel and pressed == '²√':
+            if currentTextInMainLabel == "SYNTAX ERROR":
+                return
             self.label_SecondLabel.setText(f'{pressed}{currentTextInMainLabel}')
             self.label_MainLabel.setText("")
             return
@@ -817,11 +822,17 @@ class Ui_MainWindow(object):
             self.label_MainLabel.setText("")
             self.label_SecondLabel.setText(f'{pressed}')
             return
-        
+
+        # if the second label is empty and the pressed button is an operator, than set to second label a minus 
         if pressed == '-' and not currentTextInSecondLabel:
             self.label_SecondLabel.setText('-')
-        elif (pressed == '-') and (currentTextInSecondLabel[-1] in operators):
+        elif pressed in operatorsWithoutSquareRoot and not currentTextInSecondLabel:
            return
+        #if the pressed button is an operator and last char in second label is a minus, return
+        elif pressed in operatorsWithoutSquareRoot and currentTextInSecondLabel[-1] == '-':
+           return
+        elif pressed == '-':
+            self.label_SecondLabel.setText(f'{currentTextInSecondLabel}{pressed}')
 
         # Decimal point
         if pressed == '.':
@@ -837,8 +848,8 @@ class Ui_MainWindow(object):
                     return
 
 
-        # If the user tries to add an operator and there is nothing in the label or there is already an operator, return
-        if (pressed in operatorsWithoutSquareRoot) and (not currentTextInSecondLabel or any(op in currentTextInSecondLabel for op in operators)):
+        # If the user tries to add an operator and there is already an operator, return
+        if (pressed in operatorsWithoutSquareRoot) and any(op in currentTextInSecondLabel for op in operatorsWithouMinus):
             return
         
         # If the user tries write something after factorial or second power, return
@@ -846,7 +857,7 @@ class Ui_MainWindow(object):
             return
 
         # If the user tries to add a factorial and there is a deciaml point in the label, return
-        if pressed == '!' and '.' in currentTextInSecondLabel:
+        if pressed == '!' and ('.' in currentTextInSecondLabel or '-' in currentTextInSecondLabel):
             return
 
         # If the user tries to add a square root and there is already something in the label, return
@@ -862,12 +873,13 @@ class Ui_MainWindow(object):
         operatorsWithoutMinus = ['+', '×', '÷', '^', '^2', '²√', '√', '!', '%']
         operatorsForTwoNumbers = ['+', '-', '×', '÷', '^', '√', '%']
         
-        # If there is only number in the second label, then set the main label to the number
+        # If first char is minus a there is onlu one minus in the label and there is no operator, than set the main label to the second label
         if (currentTextInSecondLabel[0] == '-' and currentTextInSecondLabel.count('-') == 1 and not any(op in currentTextInSecondLabel[1:] for op in operators)):
             self.label_MainLabel.setText(currentTextInSecondLabel)
             return
-        elif any(op in currentTextInSecondLabel for op in operatorsWithoutMinus):
-            pass
+        elif currentTextInSecondLabel and not any(op in currentTextInSecondLabel[1:] for op in operators):
+            self.label_MainLabel.setText(currentTextInSecondLabel)
+            return
                 
         # If there is an operator for two numbers and there is no second number, than SYNTAX ERROR
         for operator in operatorsForTwoNumbers:
@@ -931,7 +943,7 @@ class Ui_MainWindow(object):
                 self.label_MainLabel.setText(f'{result}')
                 return
             case '√':
-                result = CalculatorMathLib.root(float(number1), float(number2))
+                result = CalculatorMathLib.root(float(number2), float(number1))
                 self.label_MainLabel.setText(f'{result}')
                 return
             case '%':
