@@ -4,14 +4,14 @@
 ##
 # @mainpage MAIN PAGE NAME (use only with the main)
 #
-# @section description_main SECTION NAME
+# @section description_main SECTION NAME IN MAIN
 # SECTION DESCRIPTION
 #
 # Copyright (c) CodePainCodeGain.  All rights reserved.
 
 
 ##
-# @file doxy_example.py
+# @file doxy_example_main.py
 #
 # @brief BRIEF DESCRIPTION OF FILE
 #
