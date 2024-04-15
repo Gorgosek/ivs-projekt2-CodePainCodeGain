@@ -879,30 +879,44 @@ class Ui_MainWindow(object):
 
         match operatorMain:
             case '+':
-                result = float(number1) + float(number2)
+                result = CalculatorMathLib.add(float(number1), float(number2))
                 self.label_MainLabel.setText(f'{result}')
                 return
             case '-':
-                #result = float(number1) - float(number2)
-                #self.label_MainLabel.setText(f'{result}')
+                result = CalculatorMathLib.sub(float(number1), float(number2))
+                self.label_MainLabel.setText(f'{result}')
                 return
             case '×':
-                #result = float(number1) * float(number2)
-                #self.label_MainLabel.setText(f'{result}')
+                result = CalculatorMathLib.multiply(float(number1), float(number2))
+                self.label_MainLabel.setText(f'{result}')
                 return
             case '÷':
-                #result = float(number1) / float(number2)
-                #self.label_MainLabel.setText(f'{result}')
+                result = CalculatorMathLib.div(float(number1), float(number2))
+                self.label_MainLabel.setText(f'{result}')
                 return
             case '^':
+                result = CalculatorMathLib.power(float(number1), int(number2))
+                self.label_MainLabel.setText(f'{result}')
                 return
             case '√':
+                result = CalculatorMathLib.root(float(number1), float(number2))
+                self.label_MainLabel.setText(f'{result}')
                 return
             case '%':
+                result = CalculatorMathLib.modulo(float(number1), float(number2))
+                self.label_MainLabel.setText(f'{result}')
                 return
             case '^2':
+                result = CalculatorMathLib.pow2(float(number1))
+                self.label_MainLabel.setText(f'{result}')
                 return
             case '²√':
+                result = CalculatorMathLib.sqrt(float(number1))
+                self.label_MainLabel.setText(f'{result}')
+                return
+            case '!':
+                result = CalculatorMathLib.factorial(int(number1))
+                self.label_MainLabel.setText(f'{result}')
                 return
             
 
