@@ -845,6 +845,11 @@ class Ui_MainWindow(object):
         currentTextInSecondLabel = self.label_SecondLabel.text()
         operatorsForTwoNumbers = ['+', '-', '×', '÷', '^', '√', '%']
         
+        for operator in operatorsForTwoNumbers:
+            if currentTextInSecondLabel.endswith(operator):
+                self.label_SecondLabel.setText('')
+                self.label_MainLabel.setText("SYNTAX ERROR")
+
         # If there is an operator for two numbers in the label, split the label by the operator
         for operator in operatorsForTwoNumbers:
             if operator in currentTextInSecondLabel:
@@ -873,8 +878,8 @@ class Ui_MainWindow(object):
 
         match operatorMain:
             case '+':
-                #result = float(number1) + float(number2)
-                #self.label_MainLabel.setText(f'{result}')
+                result = float(number1) + float(number2)
+                self.label_MainLabel.setText(f'{result}')
                 return
             case '-':
                 #result = float(number1) - float(number2)
