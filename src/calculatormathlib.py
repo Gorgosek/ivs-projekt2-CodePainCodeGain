@@ -119,9 +119,10 @@ class CalculatorMathLib:
         @param n Number representing Nth root.
 
         @return Nth root of given number.
-        @exception Raises ValueError if 'n' is even and 'a' is negative.
+        @exception Raises ValueError if 'n' is even or negative and 'a' is negative.
         """
-        if ((n % 2) == 0) and (a < 0):
+
+        if (n < 0 or a < 0):
             raise ValueError("ValueError")
         return round(a ** (1 / n), 10)
 

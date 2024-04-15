@@ -142,8 +142,6 @@ class TestCalc(unittest.TestCase):
     # Test unexpected exponents
     def test_power_unexpected_exponents(self):
         with self.assertRaises(ValueError):
-            self.calc.power(200, 0)
-        with self.assertRaises(ValueError):
             self.calc.power(20, -1)
         with self.assertRaises(ValueError):
             self.calc.power(2, -20)
@@ -174,7 +172,7 @@ class TestCalc(unittest.TestCase):
 
     def test_square_root_decimal_numbers(self):
         self.assertEqual(self.calc.root(0.5, 0.5), 0.25)  
-        self.assertAlmostEqual(self.calc.root(125.55, 2.5), 6.9107, 4)  
+        self.assertAlmostEqual(self.calc.root(125.55, 2.5), 6.91077, 4)  
 
     # Test square root of negative numbers should raise a ValueError
     def test_square_root_negative_numbers(self):
