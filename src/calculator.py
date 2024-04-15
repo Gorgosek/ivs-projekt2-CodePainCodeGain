@@ -777,12 +777,14 @@ class Ui_MainWindow(object):
         else:
             currentText = currentText[:-1]
 
-        self.label_SecondLabel.setText(currentText) 
+        self.label_SecondLabel.setText(currentText)
+        return
 
     # Function to clear all the labels
     def clear_all(self):
         self.label_MainLabel.setText("")
         self.label_SecondLabel.setText("")
+        return
 
     # Function to add the pressed button to the label
     def pressed(self, pressed):
@@ -844,12 +846,20 @@ class Ui_MainWindow(object):
     # Function to solve the expression
     def solve_expression(self):
         currentTextInSecondLabel = self.label_SecondLabel.text()
+        operators = ['+', '-', '×', '÷', '^', '^2', '²√', '√', '!', '%']
         operatorsForTwoNumbers = ['+', '-', '×', '÷', '^', '√', '%']
         
+        for operator in operators:
+            if operator not in currentTextInSecondLabel:
+                self.label_MainLabel.setText(currentTextInSecondLabel)
+                return
+                
+
         for operator in operatorsForTwoNumbers:
             if currentTextInSecondLabel.endswith(operator):
                 self.label_SecondLabel.setText('')
                 self.label_MainLabel.setText("SYNTAX ERROR")
+                return
 
         # If there is an operator for two numbers in the label, split the label by the operator
         for operator in operatorsForTwoNumbers:
