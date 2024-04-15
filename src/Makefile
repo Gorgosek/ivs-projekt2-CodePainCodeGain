@@ -51,7 +51,7 @@ doc:
 
 # Removes ./__pychache__ directory
 clean:
-	rmdir $(CLEAN_DIRS)
+	rm -r $(CLEAN_DIRS)
 
 # uses `make all` when `make` is used
 .DEFAULT_GOAL := all
