@@ -823,16 +823,19 @@ class Ui_MainWindow(object):
             self.label_SecondLabel.setText(f'{pressed}')
             return
 
-        # if the second label is empty and the pressed button is an operator, than set to second label a minus 
+        # If the second label is empty and the pressed button is an operator, than set to second label a minus 
         if pressed == '-' and not currentTextInSecondLabel:
             self.label_SecondLabel.setText('-')
+            return
+        # If the pressed button is an operator and the second label is empty, return
         elif pressed in operatorsWithoutSquareRoot and not currentTextInSecondLabel:
            return
-        #if the pressed button is an operator and last char in second label is a minus, return
+        # If the pressed button is an operator and last char in second label is a minus, return
         elif pressed in operatorsWithoutSquareRoot and currentTextInSecondLabel[-1] == '-':
            return
         elif pressed == '-':
             self.label_SecondLabel.setText(f'{currentTextInSecondLabel}{pressed}')
+            return
 
         # Decimal point
         if pressed == '.':
@@ -843,7 +846,7 @@ class Ui_MainWindow(object):
                 if operator in currentTextInSecondLabel and '.' not in numList[-1]:
                     self.label_SecondLabel.setText(f'{currentTextInSecondLabel}{pressed}')
                     return
-            # If there is '.' in SecondLabel, return
+            # If there is '.' in second label, return
             if '.' in currentTextInSecondLabel:
                     return
 
@@ -865,6 +868,7 @@ class Ui_MainWindow(object):
             return
         
         self.label_SecondLabel.setText(f'{currentTextInSecondLabel}{pressed}')
+        return
 
     # Function to solve the expression
     def solve_expression(self):
@@ -891,6 +895,7 @@ class Ui_MainWindow(object):
         for operator in operatorsForTwoNumbers:
             # If there is a minut at the beginning of the label, split the label by the second operator
             if currentTextInSecondLabel[0] == '-':
+                # If there is an operator in the label (without first char), split the label by the operator
                 if operator in currentTextInSecondLabel[1:]:
                     numList = currentTextInSecondLabel[1:].split(operator)
                     number1 = currentTextInSecondLabel[0] + numList[0]
