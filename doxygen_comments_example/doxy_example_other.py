@@ -1,8 +1,7 @@
 """! @brief BRIEF DESCRIPTION OF THE FILE. (will be on top of the file page)"""
 
-
 ##
-# @file doxy_example2.py
+# @file doxy_example_other.py
 #
 # @brief BRIEF DESCRIPTION OF FILE
 #
