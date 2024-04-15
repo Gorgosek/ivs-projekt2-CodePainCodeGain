@@ -848,7 +848,7 @@ class Ui_MainWindow(object):
                     return
 
 
-        # If the user tries to add an operator and there is already an operator, return
+        # If the user tries to add an operator and there is already an operator, but minus is allowed, return
         if (pressed in operatorsWithoutSquareRoot) and any(op in currentTextInSecondLabel for op in operatorsWithouMinus):
             return
         
@@ -870,7 +870,6 @@ class Ui_MainWindow(object):
     def solve_expression(self):
         currentTextInSecondLabel = self.label_SecondLabel.text()
         operators = ['+', '-', '×', '÷', '^', '^2', '²√', '√', '!', '%']
-        operatorsWithoutMinus = ['+', '×', '÷', '^', '^2', '²√', '√', '!', '%']
         operatorsForTwoNumbers = ['+', '-', '×', '÷', '^', '√', '%']
         
         # If first char is minus a there is onlu one minus in the label and there is no operator, than set the main label to the second label
