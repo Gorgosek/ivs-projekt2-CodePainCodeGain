@@ -860,7 +860,7 @@ class Ui_MainWindow(object):
 
         # ANS for operators without square root
         if currentTextInMainLabel and pressed in operatorsWithoutSquareRoot:
-            if currentTextInMainLabel == "SYNTAX ERROR":
+            if currentTextInMainLabel in {"SYNTAX ERROR", "ERROR", "MATH ERROR"}:
                 return
             self.label_SecondLabel.setText(f'{currentTextInMainLabel}{pressed}')
             self.label_MainLabel.setText("")
@@ -868,7 +868,9 @@ class Ui_MainWindow(object):
         
         # ANS for square root
         if currentTextInMainLabel and pressed == '²√':
-            if currentTextInMainLabel == "SYNTAX ERROR":
+            if currentTextInMainLabel in {"SYNTAX ERROR", "ERROR", "MATH ERROR"}:
+                self.label_SecondLabel.setText(f'{pressed}')
+                self.label_MainLabel.setText("")
                 return
             self.label_SecondLabel.setText(f'{pressed}{currentTextInMainLabel}')
             self.label_MainLabel.setText("")
@@ -876,8 +878,8 @@ class Ui_MainWindow(object):
 
         # ANS for numbers
         if currentTextInMainLabel and pressed not in operators:
-            self.label_MainLabel.setText("")
             self.label_SecondLabel.setText(f'{pressed}')
+            self.label_MainLabel.setText("")
             return
 
         # If the second label is empty and the pressed button is an operator, than set to second label a minus 
@@ -988,44 +990,74 @@ class Ui_MainWindow(object):
 
         match operatorMain:
             case '+':
-                result = CalculatorMathLib.add(float(number1), float(number2))
-                self.label_MainLabel.setText(f'{result}')
+                try:
+                    result = CalculatorMathLib.add(float(number1), float(number2))
+                    self.label_MainLabel.setText(f'{result}')
+                except ValueError as error:
+                    self.label_MainLabel.setText(f'{error}')
                 return
             case '-':
-                result = CalculatorMathLib.sub(float(number1), float(number2))
-                self.label_MainLabel.setText(f'{result}')
+                try:
+                    result = CalculatorMathLib.sub(float(number1), float(number2))
+                    self.label_MainLabel.setText(f'{result}')
+                except ValueError as error:
+                    self.label_MainLabel.setText(f'{error}')
                 return
             case '×':
-                result = CalculatorMathLib.multiply(float(number1), float(number2))
-                self.label_MainLabel.setText(f'{result}')
+                try:
+                    result = CalculatorMathLib.multiply(float(number1), float(number2))
+                    self.label_MainLabel.setText(f'{result}')
+                except ValueError as error:
+                    self.label_MainLabel.setText(f'{error}')
                 return
             case '÷':
-                result = CalculatorMathLib.div(float(number1), float(number2))
-                self.label_MainLabel.setText(f'{result}')
+                try:
+                    result = CalculatorMathLib.div(float(number1), float(number2))
+                    self.label_MainLabel.setText(f'{result}')
+                except ValueError as error:
+                    self.label_MainLabel.setText(f'{error}')
                 return
             case '^':
-                result = CalculatorMathLib.power(float(number1), int(number2))
-                self.label_MainLabel.setText(f'{result}')
+                try:
+                    result = CalculatorMathLib.power(float(number1), int(number2))
+                    self.label_MainLabel.setText(f'{result}')
+                except ValueError as error:
+                    self.label_MainLabel.setText(f'{error}')
                 return
             case '√':
-                result = CalculatorMathLib.root(float(number2), float(number1))
-                self.label_MainLabel.setText(f'{result}')
+                try:
+                    result = CalculatorMathLib.root(float(number2), float(number1))
+                    self.label_MainLabel.setText(f'{result}')
+                except ValueError as error:
+                    self.label_MainLabel.setText(f'{error}')
                 return
             case '%':
-                result = CalculatorMathLib.modulo(float(number1), float(number2))
-                self.label_MainLabel.setText(f'{result}')
+                try:
+                    result = CalculatorMathLib.modulo(float(number1), float(number2))
+                    self.label_MainLabel.setText(f'{result}')
+                except ValueError as error:
+                    self.label_MainLabel.setText(f'{error}')
                 return
             case '^2':
-                result = CalculatorMathLib.pow2(float(number1))
-                self.label_MainLabel.setText(f'{result}')
+                try:
+                    result = CalculatorMathLib.pow2(float(number1))
+                    self.label_MainLabel.setText(f'{result}')
+                except ValueError as error:
+                    self.label_MainLabel.setText(f'{error}')
                 return
             case '²√':
-                result = CalculatorMathLib.sqrt(float(number1))
-                self.label_MainLabel.setText(f'{result}')
+                try:
+                    result = CalculatorMathLib.sqrt(float(number1))
+                    self.label_MainLabel.setText(f'{result}')
+                except ValueError as error:
+                    self.label_MainLabel.setText(f'{error}')
                 return
             case '!':
-                result = CalculatorMathLib.factorial(int(number1))
-                self.label_MainLabel.setText(f'{result}')
+                try:
+                    result = CalculatorMathLib.factorial(int(number1))
+                    self.label_MainLabel.setText(f'{result}')
+                except ValueError as error:
+                    self.label_MainLabel.setText(f'{error}')
                 return
             
 
