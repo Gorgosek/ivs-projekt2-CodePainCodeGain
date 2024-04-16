@@ -21,7 +21,22 @@ class HelpWindow(QDialog):
 
         # Label pro zobrazení textu nápovědy
         self.help_label = QLabel()
-        self.help_label.setText("Sem vložte text nápovědy.")  # Váš výchozí text
+        self.help_label.setText("Welcome to our calculator help guide!\n"
+                        "Use the buttons on the calculator or keyboard to control the calculator.\n"
+                        "You can use these buttons on your keyboard:\n"
+                        "Numbers\n"
+                        "(+): Addition\n"
+                        "(-): Subtraction\n"
+                        "(*): Multiplication\n"
+                        "(/): Division\n"
+                        "(%): Modulo\n"
+                        "(^ or p): Power\n"
+                        "(r): Root\n"
+                        "(!): Factorial\n"
+                        "(.): Decimal point\n"
+                        "(Delete or Backspace): Delete last character\n"
+                        "(c): Clear all\n"
+                        "(=): Result")
         layout.addWidget(self.help_label)
 
         # Tlačítko pro potvrzení a zavření okna
@@ -32,7 +47,7 @@ class HelpWindow(QDialog):
         layout.addWidget(confirm_button)
         # Added edits
         self.setLayout(layout)
-        self.setFixedSize(300, 200)
+        self.setFixedSize(500, 300)
         self.setStyleSheet("background-color: rgb(18, 25, 35);")
         self.help_label.setStyleSheet("color: white;")
         
@@ -152,6 +167,8 @@ class Ui_MainWindow(object):
         # Adding a keyboard shortcut for the nth power button
         shortcut_p = QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_P), self.pushButton_NthPower)
         shortcut_p.activated.connect(lambda: self.pressed("^"))
+        shortcut_caret = QtWidgets.QShortcut(QtGui.QKeySequence("^"), self.pushButton_NthPower)
+        shortcut_caret.activated.connect(lambda: self.pressed("^"))
 
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(15)
@@ -800,11 +817,12 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+    # Functionality
+    # Function to show the help window
     def show_help_window(self):
         self.help_window = HelpWindow()  # Vytvoření instance okna pro nápovědu
         self.help_window.exec_()  # Zobrazení okna pro nápovědu
 
-    # Functionality
     # Function to delete the last character in the label
     def delete(self):
         currentText = self.label_SecondLabel.text()
