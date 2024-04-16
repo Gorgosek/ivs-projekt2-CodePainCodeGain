@@ -932,6 +932,10 @@ class Ui_MainWindow(object):
         operators = ['+', '-', '×', '÷', '^', '^2', '²√', '√', '!', '%']
         operatorsForTwoNumbers = ['+', '-', '×', '÷', '^', '√', '%']
         
+        # If the second label is empty, return
+        if not currentTextInSecondLabel:
+            return
+
         # If first char is minus a there is onlu one minus in the label and there is no operator, than set the main label to the second label
         if (currentTextInSecondLabel[0] == '-' and currentTextInSecondLabel.count('-') == 1 and not any(op in currentTextInSecondLabel[1:] for op in operators)):
             self.label_MainLabel.setText(currentTextInSecondLabel)
