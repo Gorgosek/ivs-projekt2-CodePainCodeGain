@@ -23,6 +23,7 @@ class HelpWindow(QDialog):
         self.help_label = QLabel()
         self.help_label.setText("Welcome to our calculator help guide!\n"
                         "Use the buttons on the calculator or keyboard to control the calculator.\n"
+                        "The calculator automatically blocks some buttons that you cannot\ncurrently use due to syntax.\n"
                         "You can use these buttons on your keyboard:\n"
                         "Numbers\n"
                         "(+): Addition\n"
@@ -47,7 +48,7 @@ class HelpWindow(QDialog):
         layout.addWidget(confirm_button)
         # Added edits
         self.setLayout(layout)
-        self.setFixedSize(500, 300)
+        self.setFixedSize(500, 350)
         self.setStyleSheet("background-color: rgb(18, 25, 35);")
         self.help_label.setStyleSheet("color: white;")
         
