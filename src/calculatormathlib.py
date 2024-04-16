@@ -68,7 +68,7 @@ class CalculatorMathLib:
         @exception Raises ValueError if 'b' is zero - can't divide by zero.
         """
         if b == 0:
-            raise ValueError("ValueError")
+            raise ValueError("Division by zero ERROR")
         return round(a / b, 10)
 
     # ^2
@@ -92,8 +92,10 @@ class CalculatorMathLib:
 
         @return Nth power of given number.
         """
-        if (n < 0) or not (isinstance(n, int)):
-            raise ValueError("ValueError")
+        if (n < 0):
+            raise ValueError("Power must be positive")
+        if not (isinstance(n, int)):
+            raise ValueError("Power must be an integer")
         return round(a**n, 10)
 
     # 2√
@@ -107,7 +109,7 @@ class CalculatorMathLib:
         @exception Raises ValueError if given number is negative.
         """
         if a < 0:
-            raise ValueError("ValueError")
+            raise ValueError("Math ERROR")
         return round(a**0.5, 10)
 
     # n√
@@ -123,9 +125,9 @@ class CalculatorMathLib:
         @exception Raises ValueError if 'n' is even and 'a' is negative.
         """
         if n < 0:
-            raise ValueError("ValueError")
+            raise ValueError("Index must be positive")
         if (n % 2 == 0) and (a < 0):
-            raise ValueError("ValueError")
+            raise ValueError("Math ERROR")
         if (a < 0) and (n % 1 == 0):
             return -round((-a) ** (1 / n), 10)
         else:
@@ -142,8 +144,10 @@ class CalculatorMathLib:
         @exception Raises ValueError if given number isn't integer.
         @exception Raises ValueError if given number is negative.
         """
-        if not (isinstance(a, int)) or a < 0:
-            raise ValueError("ValueError")
+        if not (isinstance(a, int)):
+            raise ValueError("Math ERROR")
+        if a < 0:
+            raise ValueError("Math ERROR")
         if a == 0 or a == 1:
             return 1
         else:
@@ -162,5 +166,5 @@ class CalculatorMathLib:
         @exception Raises ValueError if 'b' is zero - can't divide by zero.
         """
         if b == 0:
-            raise ValueError("ValueError")
+            raise ValueError("Divison by zero ERROR")
         return round(a % b, 10)
