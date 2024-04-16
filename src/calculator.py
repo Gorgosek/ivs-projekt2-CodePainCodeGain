@@ -919,8 +919,11 @@ class Ui_MainWindow(object):
         if currentTextInSecondLabel.endswith('!') or currentTextInSecondLabel.endswith('^2'):
             return
 
-        # If the user tries to add a factorial and there is a deciaml point in the label, return
+        # If the user tries to add a factorial and there is a deciaml point or minus in the label, return
         if pressed == '!' and ('.' in currentTextInSecondLabel or '-' in currentTextInSecondLabel):
+            return
+        
+        if pressed == '!' and ('.' in currentTextInMainLabel or '-' in currentTextInMainLabel):
             return
 
         # If the user tries to add a square root and there is already something in the label, return
@@ -1055,7 +1058,7 @@ class Ui_MainWindow(object):
                 return
             case '!':
                 try:
-                    result = CalculatorMathLib.factorial(int(number1))
+                    result = CalculatorMathLib.factorial(float(number1))
                     self.label_MainLabel.setText(f'{result}')
                 except ValueError as error:
                     self.label_MainLabel.setText(f'{error}')
