@@ -24,6 +24,7 @@ class HelpWindow(QDialog):
         self.help_label.setText("Welcome to our calculator help guide!\n"
                         "Use the buttons on the calculator or keyboard to control the calculator.\n"
                         "The calculator automatically blocks some buttons that you cannot\ncurrently use due to syntax.\n"
+                        "You can only amplify with natural exponents.\n"
                         "You can use these buttons on your keyboard:\n"
                         "Numbers\n"
                         "(+): Addition\n"
@@ -1019,7 +1020,7 @@ class Ui_MainWindow(object):
                 return
             case '^':
                 try:
-                    result = CalculatorMathLib.power(float(number1), int(number2))
+                    result = CalculatorMathLib.power(float(number1), float(number2))
                     self.label_MainLabel.setText(f'{result}')
                 except ValueError as error:
                     self.label_MainLabel.setText(f'{error}')
