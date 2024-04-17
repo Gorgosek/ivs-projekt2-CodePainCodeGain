@@ -54,7 +54,7 @@ class CalculatorMathLib:
 
         @return Multiple of the two numbers.
         """
-        return round(a * b, 10)
+        return a * b
 
     # /
     @staticmethod
@@ -69,7 +69,7 @@ class CalculatorMathLib:
         """
         if b == 0:
             raise ValueError("MATH ERROR")
-        return round(a / b, 10)
+        return a / b
 
     # ^2
     @staticmethod
@@ -80,7 +80,7 @@ class CalculatorMathLib:
 
         @return Second power of the number.
         """
-        return round(a * a, 10)
+        return a * a
 
     # ^n
     @staticmethod
@@ -96,7 +96,7 @@ class CalculatorMathLib:
             raise ValueError("ERROR")
         if not n.is_integer():
             raise ValueError("ERROR")
-        return round(a**n, 10)
+        return a**n
 
     # 2√
     @staticmethod
@@ -110,7 +110,7 @@ class CalculatorMathLib:
         """
         if a < 0:
             raise ValueError("MATH ERROR")
-        return round(a**0.5, 10)
+        return a**0.5
 
     # n√
     @staticmethod
@@ -129,9 +129,9 @@ class CalculatorMathLib:
         if (n % 2 == 0) and (a < 0):
             raise ValueError("MATH ERROR")
         if (a < 0) and (n % 1 == 0):
-            return -round((-a) ** (1 / n), 10)
+            return -((-a) ** (1 / n))
         else:
-            return round((a) ** (1 / n), 10)
+            return (a) ** (1 / n)
 
     #!
     @staticmethod
@@ -168,4 +168,4 @@ class CalculatorMathLib:
         """
         if b == 0:
             raise ValueError("MATH ERROR")
-        return round(a % b, 10)
+        return a % b
