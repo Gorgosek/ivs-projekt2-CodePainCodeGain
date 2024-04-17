@@ -94,7 +94,7 @@ class CalculatorMathLib:
         """
         if (n < 0):
             raise ValueError("ERROR")
-        if not n.is_integer():
+        if not (n % 1 == 0):
             raise ValueError("ERROR")
         return a**n
 
@@ -145,7 +145,7 @@ class CalculatorMathLib:
         @exception Raises ValueError if given number is negative.
         """
     
-        if not a.is_integer():
+        if not (a % 1 == 0):
             raise ValueError("MATH ERROR")
         if a < 0:
             raise ValueError("MATH ERROR")
