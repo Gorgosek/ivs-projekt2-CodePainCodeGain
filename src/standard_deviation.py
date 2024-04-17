@@ -1,12 +1,20 @@
-import sys # for argv use
-from calculatormathlib import CalculatorMathLib
+import sys # for stdin use
+from calculatormathlib import CalculatorMathLib # Used for CalculatorMathLib() object
+
 
 nums = []
+def read_stdin():
+    for line in sys.stdin:
+        # Get rid of whitespaces
+        lineVals = line.strip().split()
 
+        # Only consider correct float values from input
+        for value in lineVals:
+            floatVal = float(value)
+            nums.append(floatVal)
+
+# Object for mathlib functions
 Math = CalculatorMathLib()
-
-for arg in sys.argv[1:]:
-    nums.append(float(arg))
 
 def sum(nums):
     res = 0
@@ -35,6 +43,8 @@ def standard_deviation():
 
 
 if __name__ == "__main__":
+    # Fills up nums[] array with values
+    read_stdin()
     S = standard_deviation()
     print(S)
 
