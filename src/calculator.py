@@ -963,12 +963,22 @@ class Ui_MainWindow(object):
                 if operator in currentTextInSecondLabel[1:]:
                     numList = currentTextInSecondLabel[1:].split(operator)
                     number1 = currentTextInSecondLabel[0] + numList[0]
+                    # If there is a decimal point at the end of the number, add 0
+                    if number1[-1] == '.':
+                        number1 += '0'
                     number2 = numList[1]
+                    if number2[-1] == '.':
+                        number2 += '0'
                     operatorMain = operator    
             elif operator in currentTextInSecondLabel:
                 numList = currentTextInSecondLabel.split(operator)
                 number1 = numList[0]
+                # If there is a decimal point at the end of the number, add 0
+                if number1[-1] == '.':
+                        number1 += '0'
                 number2 = numList[1]
+                if number2[-1] == '.':
+                        number2 += '0'
                 operatorMain = operator
         
         # If there is a second power in the label, split the label by the second power
