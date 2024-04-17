@@ -20,7 +20,7 @@ class HelpWindow(QDialog):
         """
         Initializes the help window.
         
-        :return: None
+        :return None
         """
 
         super().__init__()
@@ -66,7 +66,7 @@ class HelpWindow(QDialog):
         """
         Confirms and closes the help window.
 
-        :return: None
+        :return None
         """
         self.accept()
 
@@ -79,7 +79,7 @@ class Ui_MainWindow(object):
         Sets up the user interface.
 
         :param MainWindow: The main window widget.
-        :return: None
+        :return None
         """
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(560, 773)
@@ -845,7 +845,7 @@ class Ui_MainWindow(object):
         """!
         Opens a help window.
 
-        :return: None
+        :return None
         """
         self.help_window = HelpWindow()
         self.help_window.exec_()
@@ -855,7 +855,7 @@ class Ui_MainWindow(object):
         """!
         Deletes the last character from the label text.
 
-        :return: None
+        :return None
         """
         currentText = self.label_SecondLabel.text()
         
@@ -872,7 +872,7 @@ class Ui_MainWindow(object):
         """!
         Clears the text of all labels.
         
-        :return: None
+        :return None
         """
         self.label_MainLabel.setText("")
         self.label_SecondLabel.setText("")
@@ -884,7 +884,7 @@ class Ui_MainWindow(object):
 
         @param pressed: The value of the pressed button.
 
-        @return: None
+        @return None
         """
         currentTextInSecondLabel = self.label_SecondLabel.text()
         currentTextInMainLabel = self.label_MainLabel.text()
@@ -967,7 +967,7 @@ class Ui_MainWindow(object):
         """!
         Solves the mathematical expression.
 
-        @return: None
+        @return None
         """
 
         currentTextInSecondLabel = self.label_SecondLabel.text()
@@ -1115,7 +1115,7 @@ class Ui_MainWindow(object):
         Retranslates the text in the user interface.
 
         :param MainWindow: The main window of the application.
-        :return: None
+        :return None
         """
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Calculator"))
