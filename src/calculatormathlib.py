@@ -68,7 +68,7 @@ class CalculatorMathLib:
         @exception Raises ValueError if 'b' is zero - can't divide by zero.
         """
         if b == 0:
-            raise ValueError("Division by zero ERROR")
+            raise ValueError("MATH ERROR")
         return round(a / b, 10)
 
     # ^2
@@ -93,9 +93,9 @@ class CalculatorMathLib:
         @return Nth power of given number.
         """
         if (n < 0):
-            raise ValueError("Power must be positive")
-        if not (isinstance(n, int)):
-            raise ValueError("Power must be an integer")
+            raise ValueError("ERROR")
+        if not n.is_integer():
+            raise ValueError("ERROR")
         return round(a**n, 10)
 
     # 2√
@@ -109,7 +109,7 @@ class CalculatorMathLib:
         @exception Raises ValueError if given number is negative.
         """
         if a < 0:
-            raise ValueError("Math ERROR")
+            raise ValueError("MATH ERROR")
         return round(a**0.5, 10)
 
     # n√
@@ -125,9 +125,9 @@ class CalculatorMathLib:
         @exception Raises ValueError if 'n' is even and 'a' is negative.
         """
         if n < 0:
-            raise ValueError("Index must be positive")
+            raise ValueError("MATH ERROR")
         if (n % 2 == 0) and (a < 0):
-            raise ValueError("Math ERROR")
+            raise ValueError("MATH ERROR")
         if (a < 0) and (n % 1 == 0):
             return -round((-a) ** (1 / n), 10)
         else:
@@ -144,10 +144,11 @@ class CalculatorMathLib:
         @exception Raises ValueError if given number isn't integer.
         @exception Raises ValueError if given number is negative.
         """
-        if not (isinstance(a, int)):
-            raise ValueError("Math ERROR")
+    
+        if not a.is_integer():
+            raise ValueError("MATH ERROR")
         if a < 0:
-            raise ValueError("Math ERROR")
+            raise ValueError("MATH ERROR")
         if a == 0 or a == 1:
             return 1
         else:
@@ -166,5 +167,5 @@ class CalculatorMathLib:
         @exception Raises ValueError if 'b' is zero - can't divide by zero.
         """
         if b == 0:
-            raise ValueError("Divison by zero ERROR")
+            raise ValueError("MATH ERROR")
         return round(a % b, 10)
