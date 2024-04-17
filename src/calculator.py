@@ -919,11 +919,8 @@ class Ui_MainWindow(object):
         if currentTextInSecondLabel.endswith('!') or currentTextInSecondLabel.endswith('^2'):
             return
 
-        # If the user tries to add a factorial and there is a deciaml point or minus in the label, return
-        if pressed == '!' and ('.' in currentTextInSecondLabel or '-' in currentTextInSecondLabel):
-            return
-        
-        if pressed == '!' and ('.' in currentTextInMainLabel or '-' in currentTextInMainLabel):
+        # If the user tries to add a factorial and there is minus in the label, return
+        if pressed == '!' and '-' in currentTextInSecondLabel:
             return
 
         # If the user tries to add a square root and there is already something in the label, return
