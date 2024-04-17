@@ -1,3 +1,6 @@
+import cProfile
+import pstats
+from pstats import SortKey
 import sys # for stdin use
 from calculatormathlib import CalculatorMathLib # Used for CalculatorMathLib() object
 
@@ -46,12 +49,17 @@ def standard_deviation(nums):
     return S
 
 
-if __name__ == "__main__":
+def main():
     # Fills up nums[] array with values
     read_stdin()
 
     # Calcualates the standard_deviation using the numbers from the nums array
     S = standard_deviation(nums)
     print(S)
+
+if __name__ == "__main__":
+    cProfile.run('main()', "profiling_stats")
+    p = pstats.Stats("profiling_stats")
+    p.strip_dirs().sort_stats(SortKey.TIME).print_stats()
 
 
