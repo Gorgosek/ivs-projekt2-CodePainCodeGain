@@ -820,13 +820,14 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     # Functionality
-    # Function to show the help window
     def show_help_window(self):
-        self.help_window = HelpWindow()  # Vytvoření instance okna pro nápovědu
-        self.help_window.exec_()  # Zobrazení okna pro nápovědu
+        """!Opens a help window."""
+        self.help_window = HelpWindow()
+        self.help_window.exec_()
 
     # Function to delete the last character in the label
     def delete(self):
+        """!Deletes the last character from the label text."""
         currentText = self.label_SecondLabel.text()
         
         # If the last character is a square root or a power of 2, remove the last 2 characters
@@ -849,7 +850,6 @@ class Ui_MainWindow(object):
         """!Adds the pressed button to the label.
 
         @param pressed: The value of the pressed button.
-        @type pressed: str
 
         @return: None
         """
@@ -1003,70 +1003,70 @@ class Ui_MainWindow(object):
             case '+':
                 try:
                     result = CalculatorMathLib.add(float(number1), float(number2))
-                    self.label_MainLabel.setText(f'{result}')
+                    self.label_MainLabel.setText(f'{round(result,10)}')
                 except ValueError as error:
                     self.label_MainLabel.setText(f'{error}')
                 return
             case '-':
                 try:
                     result = CalculatorMathLib.sub(float(number1), float(number2))
-                    self.label_MainLabel.setText(f'{result}')
+                    self.label_MainLabel.setText(f'{round(result,10)}')
                 except ValueError as error:
                     self.label_MainLabel.setText(f'{error}')
                 return
             case '×':
                 try:
                     result = CalculatorMathLib.multiply(float(number1), float(number2))
-                    self.label_MainLabel.setText(f'{result}')
+                    self.label_MainLabel.setText(f'{round(result,10)}')
                 except ValueError as error:
                     self.label_MainLabel.setText(f'{error}')
                 return
             case '÷':
                 try:
                     result = CalculatorMathLib.div(float(number1), float(number2))
-                    self.label_MainLabel.setText(f'{result}')
+                    self.label_MainLabel.setText(f'{round(result,10)}')
                 except ValueError as error:
                     self.label_MainLabel.setText(f'{error}')
                 return
             case '^':
                 try:
                     result = CalculatorMathLib.power(float(number1), float(number2))
-                    self.label_MainLabel.setText(f'{result}')
+                    self.label_MainLabel.setText(f'{round(result,10)}')
                 except ValueError as error:
                     self.label_MainLabel.setText(f'{error}')
                 return
             case '√':
                 try:
                     result = CalculatorMathLib.root(float(number2), float(number1))
-                    self.label_MainLabel.setText(f'{result}')
+                    self.label_MainLabel.setText(f'{round(result,10)}')
                 except ValueError as error:
                     self.label_MainLabel.setText(f'{error}')
                 return
             case '%':
                 try:
                     result = CalculatorMathLib.modulo(float(number1), float(number2))
-                    self.label_MainLabel.setText(f'{result}')
+                    self.label_MainLabel.setText(f'{round(result,10)}')
                 except ValueError as error:
                     self.label_MainLabel.setText(f'{error}')
                 return
             case '^2':
                 try:
                     result = CalculatorMathLib.pow2(float(number1))
-                    self.label_MainLabel.setText(f'{result}')
+                    self.label_MainLabel.setText(f'{round(result,10)}')
                 except ValueError as error:
                     self.label_MainLabel.setText(f'{error}')
                 return
             case '²√':
                 try:
                     result = CalculatorMathLib.sqrt(float(number1))
-                    self.label_MainLabel.setText(f'{result}')
+                    self.label_MainLabel.setText(f'{round(result,10)}')
                 except ValueError as error:
                     self.label_MainLabel.setText(f'{error}')
                 return
             case '!':
                 try:
                     result = CalculatorMathLib.factorial(float(number1))
-                    self.label_MainLabel.setText(f'{result}')
+                    self.label_MainLabel.setText(f'{round(result,10)}')
                 except ValueError as error:
                     self.label_MainLabel.setText(f'{error}')
                 return
