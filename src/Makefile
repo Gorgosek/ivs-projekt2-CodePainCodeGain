@@ -10,6 +10,7 @@
 
 ZIP_FILE = xhajekp00_xkodajj00_xnezbea00_xnovott00.zip
 INTERPRETER = python3
+DEPS_LIST_FILEPATH = python_requirements.txt
 PIP = pip3
 CLEAN_DIRS = __pycache__
 
@@ -24,7 +25,7 @@ run: deps
 
 # Installs needed dependencies to run the program
 deps:
-	$(PIP) install -r python_requirements.txt
+	$(PIP) install -r $(DEPS_LIST_FILEPATH)
 
 # runs test for the calculator_mathlib
 # TODO add test for standard deviation
