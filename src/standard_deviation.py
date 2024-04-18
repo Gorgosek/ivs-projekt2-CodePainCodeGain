@@ -23,7 +23,7 @@ Math = CalculatorMathLib()
 def sum(nums):
     res = 0
     for num in nums:
-        res += num
+        res = Math.add(res, num)
 
     return res
 
@@ -32,7 +32,8 @@ def sum(nums):
 def sum_of_squared_differences(nums, barNum):
     res = 0
     for num in nums:
-        res += Math.pow2(num - barNum)
+        powRes = Math.pow2(num - barNum)
+        res = Math.add(res, powRes)
     return res
 
 
@@ -45,7 +46,7 @@ def standard_deviation(nums):
 
 
     # Final equation using s = sqrt(sum_of_squared_differences/argsLen-1)
-    S = Math.sqrt(Math.div(sum_of_squared_differences(nums, barX), argsLen-1))
+    S = Math.sqrt(Math.div(sum_of_squared_differences(nums, barX), Math.sub(argsLen, 1)))
     return S
 
 
