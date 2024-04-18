@@ -1,18 +1,24 @@
 import sys
-import numpy as np
+import statistics
 
-def read_and_compute_std():
-    # Parse input from stdin
-    input_data = sys.stdin.read()
-    string_values = input_data.split()
-    
-    # Make an array of floating point numbers
-    float_values = np.array(string_values, dtype=np.float64)
-    
-    # Calculate the standard deviation
-    S = np.std(float_values)
+nums = []
+def compute_std(arr):
+    # S = np.std(arr) - CALCULATES POPULATION
+    S = statistics.stdev(arr)
     return S
+
+def read_stdin():
+    for line in sys.stdin:
+        # Get rid of whitespaces
+        lineVals = line.strip().split()
+
+        # Only consider correct float values from input
+        for value in lineVals:
+            floatVal = float(value)
+            nums.append(floatVal)
+
 
 if __name__ == "__main__":
     # Print the computed standard deviation
-    print("Standard Deviation:", read_and_compute_std())
+    read_stdin()
+    print(compute_std(nums))
