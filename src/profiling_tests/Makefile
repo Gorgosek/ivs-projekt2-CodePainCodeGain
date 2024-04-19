@@ -18,15 +18,22 @@ test:
 	$(INTERPRETER) -m unittest calculator_tests.py
 
 profile: clean
+	# ORIGINAL
 	$(INTERPRETER) ../standard_deviation.py < test1-10to1.txt
 	$(INTERPRETER) ../standard_deviation.py < test2-10to3.txt
 	$(INTERPRETER) ../standard_deviation.py < test3-10to6.txt
 	$(INTERPRETER) ../standard_deviation.py < test4-10to7.txt
-	$(INTERPRETER)	check_std_correctness.py < test1-10to1.txt
+	# NUMPY OPTIMIZED
+	$(INTERPRETER) ../np_standard_deviation.py < test1-10to1.txt
+	$(INTERPRETER) ../np_standard_deviation.py < test2-10to3.txt
+	$(INTERPRETER) ../np_standard_deviation.py < test3-10to6.txt
+	$(INTERPRETER) ../np_standard_deviation.py < test4-10to7.txt
+	# CONTROL USING statistics.stdev()
+	$(INTERPRETER) check_std_correctness.py < test1-10to1.txt
 	$(INTERPRETER) check_std_correctness.py < test2-10to3.txt
 	$(INTERPRETER) check_std_correctness.py < test3-10to6.txt
 	$(INTERPRETER) check_std_correctness.py < test4-10to7.txt
-	#$(INTERPRETER) ../standard_deviation.py < test5-10to8.txt
+	# $(INTERPRETER) ../standard_deviation.py < test5-10to8.txt
 
 
 
@@ -46,7 +53,7 @@ doc:
 
 # Removes ./__pychache__ directory
 clean:
-	rm -r ../__pycache__/
+	-rm -r ../__pycache__/
 
 # uses `make all` when `make` is used
 .DEFAULT_GOAL := all
