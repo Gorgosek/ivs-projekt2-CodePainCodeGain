@@ -2,15 +2,19 @@ import cProfile
 import pstats
 from pstats import SortKey
 import sys # for stdin use
-import numpy as np
 from calculatormathlib import CalculatorMathLib # Used for CalculatorMathLib() object
 
 
+nums = []
 def read_stdin():
-    input_data = sys.stdin.read()
-    float_vals = np.array(input_data.split(), dtype=np.float64)
-    return float_vals
+    for line in sys.stdin:
+        # Get rid of whitespaces
+        lineVals = line.strip().split()
 
+        # Only consider correct float values from input
+        for value in lineVals:
+            floatVal = float(value)
+            nums.append(floatVal)
 
 # Object for mathlib functions
 Math = CalculatorMathLib()
@@ -48,7 +52,7 @@ def standard_deviation(nums):
 
 def main():
     # Fills up nums[] array with values
-    nums = read_stdin()
+    read_stdin()
 
     # Calcualates the standard_deviation using the numbers from the nums array
     S = standard_deviation(nums)
