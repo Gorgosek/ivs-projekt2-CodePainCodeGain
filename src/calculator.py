@@ -916,6 +916,10 @@ class Ui_MainWindow(object):
             self.label_MainLabel.setText("")
             return
 
+        # If the user tries write something after factorial or second power, return
+        if currentTextInSecondLabel.endswith('!') or currentTextInSecondLabel.endswith('^2'):
+            return
+
         # If the second label is empty and the pressed button is an operator, than set to second label a minus 
         if pressed == '-' and not currentTextInSecondLabel:
             self.label_SecondLabel.setText('-')
@@ -926,6 +930,9 @@ class Ui_MainWindow(object):
         # If the pressed button is an operator and last char in second label is a minus, return
         elif pressed in operatorsWithoutSquareRoot and currentTextInSecondLabel[-1] == '-':
            return
+        # If the pressed button is a minus and the last char is digit, return
+        elif pressed == '-' and currentTextInSecondLabel[-1].isdigit():
+            return
         elif pressed == '-':
             self.label_SecondLabel.setText(f'{currentTextInSecondLabel}{pressed}')
             return
@@ -943,13 +950,8 @@ class Ui_MainWindow(object):
             if '.' in currentTextInSecondLabel:
                     return
 
-
         # If the user tries to add an operator and there is already an operator, but minus is allowed, return
         if (pressed in operatorsWithoutSquareRoot) and any(op in currentTextInSecondLabel for op in operatorsWithouMinus):
-            return
-        
-        # If the user tries write something after factorial or second power, return
-        if currentTextInSecondLabel.endswith('!') or currentTextInSecondLabel.endswith('^2'):
             return
 
         # If the user tries to add a factorial and there is minus in the label, return
