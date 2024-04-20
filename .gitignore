@@ -1,4 +1,6 @@
 **/.DS_Store
 doc
 src/__pycache__
+src/profiling_tests
+src/profiling_stats
 .idea/
