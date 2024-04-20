@@ -958,7 +958,21 @@ class Ui_MainWindow(object):
                         return
             if currentTextInSecondLabel.count('-') < 3: 
                 self.label_SecondLabel.setText(f'{currentTextInSecondLabel}{pressed}')
-            return
+                return
+            
+        if pressed in operatorsForTwoNumbers:
+            for operator in operatorsForTwoNumbers:
+            # If there is a minut at the beginning of the label, split the label by the second operator
+                if currentTextInSecondLabel[0] == '-':
+                    # If there is an operator in the label (without first char), split the label by the operator
+                    if operator in currentTextInSecondLabel[1:]:
+                        numList = currentTextInSecondLabel[1:].split(operator)
+                        if operator == '-':
+                            return 
+                elif operator in currentTextInSecondLabel:
+                    numList = currentTextInSecondLabel.split(operator)
+                    if operator == '-':
+                            return 
 
         # Decimal point
         if pressed == '.':
