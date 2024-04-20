@@ -926,6 +926,9 @@ class Ui_MainWindow(object):
         if pressed == '-' and not currentTextInSecondLabel:
             self.label_SecondLabel.setText('-')
             return
+        # If the pressed button is a minus and the last char in the second label is a plus, return
+        elif pressed == '-' and currentTextInSecondLabel[-1] == '+':
+            return
         # If the pressed button is an operator and the second label is empty, return
         elif pressed in operatorsWithoutSquareRoot and not currentTextInSecondLabel:
            return
@@ -959,8 +962,9 @@ class Ui_MainWindow(object):
             if currentTextInSecondLabel.count('-') < 3: 
                 self.label_SecondLabel.setText(f'{currentTextInSecondLabel}{pressed}')
                 return
-            
-        if pressed in operatorsForTwoNumbers:
+        
+        # If the pressed button is an operator and there is already an operator in the label, return
+        if pressed in operatorsWithouMinus:
             for operator in operatorsForTwoNumbers:
             # If there is a minut at the beginning of the label, split the label by the second operator
                 if currentTextInSecondLabel[0] == '-':
