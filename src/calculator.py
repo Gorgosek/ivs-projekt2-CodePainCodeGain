@@ -891,6 +891,8 @@ class Ui_MainWindow(object):
         operators = ['+', '-', '×', '÷', '^', '^2', '²√', '√', '!', '%']
         operatorsWithouMinus = ['+', '×', '÷', '^', '^2', '²√', '√', '!', '%']
         operatorsWithoutSquareRoot = ['+', '-', '×', '÷', '^', '^2', '√', '!', '%']
+        operatorsForTwoNumbers = ['+', '-', '×', '÷', '^', '√', '%']
+        
 
         # ANS for operators without square root
         if currentTextInMainLabel and pressed in operatorsWithoutSquareRoot:
@@ -930,11 +932,32 @@ class Ui_MainWindow(object):
         # If the pressed button is an operator and last char in second label is a minus, return
         elif pressed in operatorsWithoutSquareRoot and currentTextInSecondLabel[-1] == '-':
            return
-        # If the pressed button is a minus and the last char is digit, return
-        elif pressed == '-' and currentTextInSecondLabel[-1].isdigit():
-            return
+        # If the pressed button is a minus and there can by only 2 minus in the label, return
         elif pressed == '-':
-            self.label_SecondLabel.setText(f'{currentTextInSecondLabel}{pressed}')
+            for operator in operatorsForTwoNumbers:
+            # If there is a minut at the beginning of the label, split the label by the second operator
+                if currentTextInSecondLabel[0] == '-':
+                    # If there is an operator in the label (without first char), split the label by the operator
+                    if operator in currentTextInSecondLabel[1:]:
+                        numList = currentTextInSecondLabel[1:].split(operator)
+                        number1 = currentTextInSecondLabel[0] + numList[0]
+                        number2 = numList[1]
+                        if number2 == '':
+                            self.label_SecondLabel.setText(f'{currentTextInSecondLabel}{pressed}')
+                            return
+                        elif number2[0].isdigit():
+                            return
+                elif operator in currentTextInSecondLabel:
+                    numList = currentTextInSecondLabel.split(operator)
+                    number1 = numList[0]
+                    number2 = numList[1]
+                    if number2 == '':
+                        self.label_SecondLabel.setText(f'{currentTextInSecondLabel}{pressed}')
+                        return
+                    elif number2[0].isdigit():
+                        return
+            if currentTextInSecondLabel.count('-') < 3: 
+                self.label_SecondLabel.setText(f'{currentTextInSecondLabel}{pressed}')
             return
 
         # Decimal point
