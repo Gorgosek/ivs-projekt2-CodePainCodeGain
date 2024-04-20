@@ -23,4 +23,4 @@ def main():
 if __name__ == "__main__":
     cProfile.run('main()', "profiling_stats")
     p = pstats.Stats("profiling_stats")
-    p.strip_dirs().sort_stats(SortKey.TIME).print_stats()
+    p.strip_dirs().sort_stats('time').print_stats()
