@@ -1,5 +1,8 @@
 # Stats
 
+## GOOGLE TABLE
+[](https://docs.google.com/spreadsheets/d/1IYO5rM8VRftpOit8__mbqtAXBnHD48psSik66RdWGAE/edit?usp=sharing) 
+
 **test6-tenmillionNONROUNDED**
 - my: 577213.8724766021
 - statistics.stdev: 577213.8724765829
@@ -811,6 +814,137 @@ Sat Apr 20 01:30:23 2024    profiling_stats
 
 
 #python3 ../standard_deviation.py < test5-10to8.txt
+```
+
+#### test5-10to8
+
+```
+python3 ../standard_deviation.py < test5-10to8.txt
+577373407.7003834
+Sat Apr 20 01:56:05 2024    profiling_stats
+
+         400455692 function calls in 111.798 seconds
+
+   Ordered by: internal time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1   36.455   36.455   49.292   49.292 standard_deviation.py:9(read_stdin)
+        1   28.173   28.173   41.942   41.942 standard_deviation.py:32(sum_of_squared_differences)
+200000000   13.028    0.000   13.028    0.000 calculatormathlib.py:24(add)
+        1   12.550   12.550   18.759   18.759 standard_deviation.py:23(sum)
+100000000    6.950    0.000    6.950    0.000 calculatormathlib.py:75(pow2)
+        1    6.327    6.327    6.327    6.327 {method 'split' of 'str' objects}
+100000000    4.485    0.000    4.485    0.000 {method 'append' of 'list' objects}
+        1    1.805    1.805  111.798  111.798 standard_deviation.py:53(main)
+        1    1.016    1.016    1.016    1.016 {method 'strip' of 'str' objects}
+   227838    0.938    0.000    0.938    0.000 {built-in method _codecs.utf_8_decode}
+   227838    0.072    0.000    1.010    0.000 codecs.py:319(decode)
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+        1    0.000    0.000  111.798  111.798 {built-in method builtins.exec}
+        1    0.000    0.000   60.702   60.702 standard_deviation.py:40(standard_deviation)
+        1    0.000    0.000    0.000    0.000 calculatormathlib.py:102(sqrt)
+        2    0.000    0.000    0.000    0.000 calculatormathlib.py:60(div)
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+        1    0.000    0.000  111.798  111.798 <string>:1(<module>)
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.000    0.000    0.000    0.000 calculatormathlib.py:36(sub)
+
+
+python3 ../np_standard_deviation.py < test5-10to8.txt
+577373407.7003833
+Sat Apr 20 01:57:34 2024    profiling_stats
+
+         200000025 function calls in 85.871 seconds
+
+   Ordered by: internal time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1   35.723   35.723   54.673   54.673 np_standard_deviation.py:20(sum_of_squared_differences)
+        1   21.206   21.206   21.206   21.206 {built-in method numpy.array}
+100000000    9.632    0.000    9.632    0.000 calculatormathlib.py:75(pow2)
+100000000    9.318    0.000    9.318    0.000 calculatormathlib.py:24(add)
+        1    6.286    6.286    6.286    6.286 {method 'split' of 'str' objects}
+        1    1.728    1.728   31.054   31.054 np_standard_deviation.py:9(read_stdin)
+        1    1.018    1.018    1.018    1.018 {built-in method _codecs.utf_8_decode}
+        1    0.815    0.815    1.833    1.833 {method 'read' of '_io.TextIOWrapper' objects}
+        1    0.077    0.077   85.868   85.868 np_standard_deviation.py:40(main)
+        1    0.064    0.064    0.064    0.064 {method 'reduce' of 'numpy.ufunc' objects}
+        1    0.003    0.003   85.871   85.871 <string>:1(<module>)
+        1    0.000    0.000   54.738   54.738 np_standard_deviation.py:28(standard_deviation)
+        1    0.000    0.000   85.871   85.871 {built-in method builtins.exec}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+        1    0.000    0.000    1.018    1.018 codecs.py:319(decode)
+        1    0.000    0.000    0.064    0.064 fromnumeric.py:2177(sum)
+        1    0.000    0.000    0.064    0.064 fromnumeric.py:71(_wrapreduction)
+        2    0.000    0.000    0.000    0.000 calculatormathlib.py:60(div)
+        1    0.000    0.000    0.000    0.000 calculatormathlib.py:102(sqrt)
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.isinstance}
+        1    0.000    0.000    0.000    0.000 fromnumeric.py:2172(_sum_dispatcher)
+        1    0.000    0.000    0.000    0.000 fromnumeric.py:72(<dictcomp>)
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+        1    0.000    0.000    0.000    0.000 calculatormathlib.py:36(sub)
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.000    0.000    0.000    0.000 {method 'items' of 'dict' objects}
+
+
+python3 check_std_correctness.py < test5-10to8.txt
+577373407.7004517
+Sat Apr 20 02:00:49 2024    profiling_stats
+
+         500001323 function calls (500001321 primitive calls) in 195.118 seconds
+
+   Ordered by: internal time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1   59.358   59.358  163.919  163.919 statistics.py:697(_ss)
+200000000   36.157    0.000   36.157    0.000 {method 'as_integer_ratio' of 'numpy.float64' objects}
+        1   33.940   33.940   73.202   73.202 statistics.py:150(_sum)
+200000000   27.401    0.000   63.558    0.000 statistics.py:240(_exact_ratio)
+        1   21.274   21.274   21.274   21.274 {built-in method numpy.array}
+100000000    7.062    0.000    7.062    0.000 {method 'get' of 'dict' objects}
+        1    6.276    6.276    6.276    6.276 {method 'split' of 'str' objects}
+        1    1.740    1.740   31.121   31.121 check_std_correctness.py:13(read_stdin)
+        1    1.015    1.015    1.015    1.015 {built-in method _codecs.utf_8_decode}
+        1    0.816    0.816    1.831    1.831 {method 'read' of '_io.TextIOWrapper' objects}
+        1    0.075    0.075  195.115  195.115 check_std_correctness.py:18(main)
+        1    0.003    0.003  195.118  195.118 <string>:1(<module>)
+      246    0.000    0.000    0.000    0.000 {built-in method math.gcd}
+      166    0.000    0.000    0.000    0.000 fractions.py:62(__new__)
+       82    0.000    0.000    0.000    0.000 fractions.py:451(_add)
+        2    0.000    0.000    0.001    0.000 {built-in method builtins.sum}
+       82    0.000    0.000    0.000    0.000 fractions.py:356(forward)
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+       42    0.000    0.000    0.000    0.000 statistics.py:198(<genexpr>)
+       42    0.000    0.000    0.000    0.000 statistics.py:721(<genexpr>)
+        1    0.000    0.000    1.015    1.015 codecs.py:319(decode)
+        1    0.000    0.000  163.919  163.919 statistics.py:725(variance)
+        1    0.000    0.000  195.118  195.118 {built-in method builtins.exec}
+      166    0.000    0.000    0.000    0.000 {built-in method __new__ of type object at 0x5effacd4f9a0}
+      165    0.000    0.000    0.000    0.000 fractions.py:256(numerator)
+       84    0.000    0.000    0.000    0.000 {built-in method builtins.isinstance}
+      165    0.000    0.000    0.000    0.000 fractions.py:260(denominator)
+        1    0.000    0.000  163.919  163.919 statistics.py:816(stdev)
+        1    0.000    0.000    0.000    0.000 statistics.py:264(_convert)
+       41    0.000    0.000    0.000    0.000 __init__.py:579(__missing__)
+      2/1    0.000    0.000    0.000    0.000 {built-in method _abc._abc_subclasscheck}
+        2    0.000    0.000    0.000    0.000 {built-in method _abc._abc_instancecheck}
+        2    0.000    0.000    0.000    0.000 fractions.py:368(reverse)
+        1    0.000    0.000  163.919  163.919 check_std_correctness.py:8(compute_std)
+        1    0.000    0.000    0.000    0.000 __init__.py:565(__init__)
+        2    0.000    0.000    0.000    0.000 fractions.py:499(_div)
+        2    0.000    0.000    0.000    0.000 abc.py:117(__instancecheck__)
+        1    0.000    0.000    0.000    0.000 numbers.py:283(__float__)
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.iter}
+      2/1    0.000    0.000    0.000    0.000 abc.py:121(__subclasscheck__)
+        1    0.000    0.000    0.000    0.000 statistics.py:209(_coerce)
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+        2    0.000    0.000    0.000    0.000 {method 'items' of 'dict' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.000    0.000    0.000    0.000 {built-in method math.sqrt}
+        1    0.000    0.000    0.000    0.000 __init__.py:640(update)
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.issubclass}
+        1    0.000    0.000    0.000    0.000 fractions.py:193(as_integer_ratio)
+
 ```
 
 
