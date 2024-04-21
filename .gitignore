@@ -4,3 +4,5 @@ src/__pycache__
 src/profiling_tests
 src/profiling_stats
 .idea/
+src/profiling_tests/test*
+profiling_stats
