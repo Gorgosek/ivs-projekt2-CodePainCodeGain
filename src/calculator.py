@@ -865,6 +865,7 @@ class Ui_MainWindow(object):
         else:
             currentText = currentText[:-1]
 
+        self.label_MainLabel.setText("")
         self.label_SecondLabel.setText(currentText)
         return
 
@@ -896,7 +897,7 @@ class Ui_MainWindow(object):
 
         # ANS for operators without square root
         if currentTextInMainLabel and pressed in operatorsWithoutSquareRoot:
-            if currentTextInMainLabel in {"SYNTAX ERROR", "ERROR", "MATH ERROR"}:
+            if currentTextInMainLabel in {"SYNTAX ERROR", "ERROR", "MATH ERROR", "OVERFLOW ERROR"}:
                 return
             self.label_SecondLabel.setText(f'{currentTextInMainLabel}{pressed}')
             self.label_MainLabel.setText("")
@@ -904,7 +905,7 @@ class Ui_MainWindow(object):
         
         # ANS for square root
         if currentTextInMainLabel and pressed == '²√':
-            if currentTextInMainLabel in {"SYNTAX ERROR", "ERROR", "MATH ERROR"}:
+            if currentTextInMainLabel in {"SYNTAX ERROR", "ERROR", "MATH ERROR", "OVERFLOW ERROR"}:
                 self.label_SecondLabel.setText(f'{pressed}')
                 self.label_MainLabel.setText("")
                 return
@@ -1087,6 +1088,11 @@ class Ui_MainWindow(object):
                     self.label_MainLabel.setText(f'{round(result,10)}')
                 except ValueError as error:
                     self.label_MainLabel.setText(f'{error}')
+                except OverflowError:
+                    self.label_MainLabel.setText(f'OVERFLOW ERROR')
+                except:
+                    self.label_MainLabel.setText(f'ERROR')
+                return
                 return
             case '-':
                 try:
@@ -1094,6 +1100,11 @@ class Ui_MainWindow(object):
                     self.label_MainLabel.setText(f'{round(result,10)}')
                 except ValueError as error:
                     self.label_MainLabel.setText(f'{error}')
+                except OverflowError:
+                    self.label_MainLabel.setText(f'OVERFLOW ERROR')
+                except:
+                    self.label_MainLabel.setText(f'ERROR')
+                return
                 return
             case '×':
                 try:
@@ -1101,6 +1112,11 @@ class Ui_MainWindow(object):
                     self.label_MainLabel.setText(f'{round(result,10)}')
                 except ValueError as error:
                     self.label_MainLabel.setText(f'{error}')
+                except OverflowError:
+                    self.label_MainLabel.setText(f'OVERFLOW ERROR')
+                except:
+                    self.label_MainLabel.setText(f'ERROR')
+                return
                 return
             case '÷':
                 try:
@@ -1108,6 +1124,11 @@ class Ui_MainWindow(object):
                     self.label_MainLabel.setText(f'{round(result,10)}')
                 except ValueError as error:
                     self.label_MainLabel.setText(f'{error}')
+                except OverflowError:
+                    self.label_MainLabel.setText(f'OVERFLOW ERROR')
+                except:
+                    self.label_MainLabel.setText(f'ERROR')
+                return
                 return
             case '^':
                 try:
@@ -1115,6 +1136,10 @@ class Ui_MainWindow(object):
                     self.label_MainLabel.setText(f'{round(result,10)}')
                 except ValueError as error:
                     self.label_MainLabel.setText(f'{error}')
+                except OverflowError:
+                    self.label_MainLabel.setText(f'OVERFLOW ERROR')
+                except:
+                    self.label_MainLabel.setText(f'ERROR')
                 return
             case '√':
                 try:
@@ -1122,6 +1147,11 @@ class Ui_MainWindow(object):
                     self.label_MainLabel.setText(f'{round(result,10)}')
                 except ValueError as error:
                     self.label_MainLabel.setText(f'{error}')
+                except OverflowError:
+                    self.label_MainLabel.setText(f'OVERFLOW ERROR')
+                except:
+                    self.label_MainLabel.setText(f'ERROR')
+                return
                 return
             case '%':
                 try:
@@ -1129,6 +1159,11 @@ class Ui_MainWindow(object):
                     self.label_MainLabel.setText(f'{round(result,10)}')
                 except ValueError as error:
                     self.label_MainLabel.setText(f'{error}')
+                except OverflowError:
+                    self.label_MainLabel.setText(f'OVERFLOW ERROR')
+                except:
+                    self.label_MainLabel.setText(f'ERROR')
+                return
                 return
             case '^2':
                 try:
@@ -1136,6 +1171,11 @@ class Ui_MainWindow(object):
                     self.label_MainLabel.setText(f'{round(result,10)}')
                 except ValueError as error:
                     self.label_MainLabel.setText(f'{error}')
+                except OverflowError:
+                    self.label_MainLabel.setText(f'OVERFLOW ERROR')
+                except:
+                    self.label_MainLabel.setText(f'ERROR')
+                return
                 return
             case '²√':
                 try:
@@ -1143,6 +1183,11 @@ class Ui_MainWindow(object):
                     self.label_MainLabel.setText(f'{round(result,10)}')
                 except ValueError as error:
                     self.label_MainLabel.setText(f'{error}')
+                except OverflowError:
+                    self.label_MainLabel.setText(f'OVERFLOW ERROR')
+                except:
+                    self.label_MainLabel.setText(f'ERROR')
+                return
                 return
             case '!':
                 try:
@@ -1150,6 +1195,11 @@ class Ui_MainWindow(object):
                     self.label_MainLabel.setText(f'{round(result,10)}')
                 except ValueError as error:
                     self.label_MainLabel.setText(f'{error}')
+                except OverflowError:
+                    self.label_MainLabel.setText(f'OVERFLOW ERROR')
+                except:
+                    self.label_MainLabel.setText(f'ERROR')
+                return
                 return
             
 
