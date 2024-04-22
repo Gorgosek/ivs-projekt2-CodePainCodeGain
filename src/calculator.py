@@ -897,7 +897,7 @@ class Ui_MainWindow(object):
 
         # ANS for operators without square root
         if currentTextInMainLabel and pressed in operatorsWithoutSquareRoot:
-            if currentTextInMainLabel in {"SYNTAX ERROR", "ERROR", "MATH ERROR", "OVERFLOW ERROR"}:
+            if currentTextInMainLabel in {"SYNTAX ERROR", "ERROR", "MATH ERROR", "OVERFLOW ERROR", "inf"}:
                 return
             self.label_SecondLabel.setText(f'{currentTextInMainLabel}{pressed}')
             self.label_MainLabel.setText("")
@@ -905,7 +905,7 @@ class Ui_MainWindow(object):
         
         # ANS for square root
         if currentTextInMainLabel and pressed == '²√':
-            if currentTextInMainLabel in {"SYNTAX ERROR", "ERROR", "MATH ERROR", "OVERFLOW ERROR"}:
+            if currentTextInMainLabel in {"SYNTAX ERROR", "ERROR", "MATH ERROR", "OVERFLOW ERROR", "inf"}:
                 self.label_SecondLabel.setText(f'{pressed}')
                 self.label_MainLabel.setText("")
                 return
