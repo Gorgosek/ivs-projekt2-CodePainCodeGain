@@ -1,0 +1,6 @@
+Package: calc.ivs
+Version: 1.0
+Maintainer: CodePainCodeGain
+Architecture: all
+Description: Calculator by
+Depends: python3-pip
