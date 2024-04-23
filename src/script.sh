@@ -7,3 +7,7 @@ mkdir ../installer/tmp 2>/dev/null
 cp python_requirements.txt ../installer/tmp/python_requirements.txt
 chmod +x ../installer/DEBIAN/postinst
 dpkg-deb --build ../installer/ ../installer/calc_installer.deb
+
+mv ../installer/calc_installer.deb .
+rm -r ../installer/usr
+rm -r ../installer/tmp
