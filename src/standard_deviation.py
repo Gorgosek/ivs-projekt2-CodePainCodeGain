@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import cProfile
 import pstats
 from pstats import SortKey
