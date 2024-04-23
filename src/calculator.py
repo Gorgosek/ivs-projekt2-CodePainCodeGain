@@ -11,7 +11,7 @@
 #   Operations supported include addition (+), subtraction (-), multiplication (*), division (/), square (^2), exponentiation (^n),
 #   square root (2√), nth root (n√), factorial (!) and modulo (%).
 #
-# @section author_calculatormathlib Author(s)
+# @section author_calculator Author(s)
 # xkodajj00
 
 
