@@ -1,0 +1,6 @@
+Package: stddev
+Version: 1.0
+Maintainer: CodePainCodeGain
+Architecture: all
+Description: Standart deviation calculator by  CodePainCodeGain
+Depends: python3-pip
