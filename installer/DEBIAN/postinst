@@ -1,3 +1,25 @@
-#!/bin/sh
-apt install python3 python3-pip
-pip3 install -r /tmp/requirements.txt
+#!/bin/bash
+
+log() {
+    echo "[postinst] $@"
+}
+
+# Install Python and pip3
+log "Installing Python and pip3..."
+apt install -y python3 python3-pip
+
+if [ $? -ne 0 ]; then
+    log "Failed to install Python and pip3."
+    exit 1
+fi
+
+# Install Python dependencies
+log "Installing Python dependencies..."
+pip3 install -r /tmp/python_requirements.txt
+
+if [ $? -eq 0 ]; then
+    log "Python dependencies installed successfully."
+else
+    log "Failed to install Python dependencies."
+    exit 1
+fi
