@@ -1,4 +1,19 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
+
+##
+# @file calculator.py
+#
+# @brief GUI & functionality of calculator
+#
+# @section description_calculator Description
+# - This calculator program provides a graphical user interface (GUI) for performing various mathematical operations.
+#   Operations supported include addition (+), subtraction (-), multiplication (*), division (/), square (^2), exponentiation (^n),
+#   square root (2√), nth root (n√), factorial (!) and modulo (%).
+#
+# @section author_calculatormathlib Author(s)
+# xkodajj00
+
 
 # Form implementation generated from reading ui file 'calculator.ui'
 #
