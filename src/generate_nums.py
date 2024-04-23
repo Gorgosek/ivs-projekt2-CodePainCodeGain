@@ -1,3 +1,21 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+##
+# @file generate_nums.py
+#
+# @brief Generator for a specfied amount of random floating point numbers
+#
+# @section description Description
+# - Implicitly generates 1000
+# - First passed argument determines the amount of numbers to generate 
+# - Can be tweaked by internally changing the values of:
+#   - Interval bounds (lower_bound, upper_bound) 
+#   - decimals_places
+#
+# @section author Author(s)
+# xnezbea00
+
 import random
 import sys
 
