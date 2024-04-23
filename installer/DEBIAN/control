@@ -1,0 +1,11 @@
+Package: ivs-calculator
+Version: 1.0
+Maintainer: CodePainCodeGain-Team
+	    <xnezbea00@vutbr.cz,
+	     xkodajj00@vutbr.cz,
+	     xnovott00@vutbr.cz,
+	     xhajekp00@vutbr.cz>
+Architecture: all
+Description: Calculator by CodePainCodeGain
+Depends: 
+
