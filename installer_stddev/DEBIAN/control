@@ -2,6 +2,5 @@ Package: stddev
 Version: 1.0
 Maintainer: CodePainCodeGain
 Architecture: all
-Description: Standart deviation calculator by  CodePainCodeGain
+Description: Standard deviation calculator by  CodePainCodeGain
 Depends:
-
