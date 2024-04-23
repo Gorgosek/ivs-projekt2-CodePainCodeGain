@@ -7,5 +7,5 @@ Maintainer: CodePainCodeGain-Team
 	     xhajekp00@vutbr.cz>
 Architecture: all
 Description: Calculator by CodePainCodeGain
-Depends: 
+Depends: python3, python3-pip
 
