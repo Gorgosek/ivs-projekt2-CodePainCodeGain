@@ -1,6 +1,6 @@
-Package: calc
+Package: IVS-Calculator
 Version: 1.0
-Maintainer: CodePainCodeGain
+Maintainer: CodePainCodeGain-Team
 Architecture: all
 Description: Calculator by CodePainCodeGain
-Depends: python3-pip
+Depends: python3, PyQt5
