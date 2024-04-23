@@ -5,5 +5,5 @@ mkdir -p ../installer_stddev/usr/local/bin 2>/dev/null
 ln -sf /usr/share/stddev/standard_deviation.py ../installer_stddev/usr/local/bin/stddev #name of binary
 dpkg-deb --build ../installer_stddev/ ../installer_stddev/stddev_installer.deb
 
-mv ../installer_stddev/stddev_installer.deb .
+mv ../installer_stddev/stddev_installer.deb ..
 rm -r ../installer_stddev/usr
