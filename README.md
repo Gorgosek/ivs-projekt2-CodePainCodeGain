@@ -1,5 +1,5 @@
 # CodePainCodeGain - gigaCalc
-> Nejvíce cool kalkulačka pod sluncem
+> Nejvíc cool kalkulačka pod sluncem
 ## File Structure
 ```
 mockup/
@@ -23,11 +23,11 @@ README.md|txt
 .editorconfig
 ```
 
-## Prostredi
+## Prostředí
 -------------
 - Ubuntu 64bit
 
-## Autori
+## Autoři
 -------------
 **CodePainCodeGain**
 - xnezbea00 Adam Nezbeda
