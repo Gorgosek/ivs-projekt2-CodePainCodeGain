@@ -1,5 +1,17 @@
 # CodePainCodeGain - gigaCalc
 > Nejvíc cool kalkulačka pod sluncem
+## Prerequisities:
+- *Bez installeru*:
+```bash
+  $ sudo apt-get update
+  $ sudo apt-get install python3 python3-pip qtwayland5
+
+```
+- *Za použití installeru*:
+```bash
+  $ sudo dpkg -i ivs-calc_installer.deb
+  $ sudo apt install -f
+```
 ## File Structure
 ```
 mockup/
