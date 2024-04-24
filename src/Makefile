@@ -78,6 +78,7 @@ pack: collect-dirs clean
 collect-dirs: clean doc install-create
 	mkdir ../../$(PACK_DIR_NAME)
 	cp -a ../doc ../../$(PACK_DIR_NAME)/doc
+	mkdir ../../$(PACK_DIR_NAME)/install
 	cp ../ivs-calc_installer.deb ../../$(PACK_DIR_NAME)/install/
 	cp ../stddev_installer.deb ../../$(PACK_DIR_NAME)/install/
 
@@ -98,8 +99,8 @@ mv-install:
 # Removes ./__pychache__ directory, installer temporary directories,
 # generator test files, profiler output files
 clean:
-	-rm -r $(CLEAN_DIRS)
-	-rm $(CLEAN_FILES)
+	-rm -rf $(CLEAN_DIRS)
+	-rm -f $(CLEAN_FILES)
 	-rm ../ivs-calc_installer.deb
 	-rm ../stddev_installer.deb
 	-rm -rf ../../$(PACK_DIR_NAME)
