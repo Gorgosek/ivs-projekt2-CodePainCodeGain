@@ -5,3 +5,7 @@ src/profiling_tests
 src/profiling_stats
 .idea/
 profiling_stats
+installer/tmp
+installer/usr
+installer_stddev/usr
+installer_stddev/tmp
