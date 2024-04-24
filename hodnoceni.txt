@@ -1,0 +1,4 @@
+xnezbea00 110 (Profiling, makefile, instalátory a odinstalátory)
+xkodajj00 105 (GUI, Integrace GUI a mat. knihovny, bugfixing GUI, mockupy)
+xnovott00 110 (mat. testy, mat. knihovna, uživatelská příručka)
+xhajekp00 75 (nastavení doxyfile, mat. knihovna, instalátorské scripty)
