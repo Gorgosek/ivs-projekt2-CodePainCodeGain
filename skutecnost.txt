@@ -8,10 +8,13 @@ Skutečnost
 
 Rozdělení práce:
     Všichni začali podle plánu (rozdělení na frontend a backend), ale nakonec se během vývoje tým spíše
-    soustředil na backend  (bylo na něm více práce než bylo předpokládáno). Více viz. hodnoceni.txt.
+    soustředil na backend (bylo na něm více práce než bylo předpokládáno). A došlo i k přerozdělení
+    jednotlivých úkolů. Detailní rozdělení viz. hodnoceni.txt.
 
 Komunikační kanály:
     Pro komunikaci byly bez problémů použity předem stanovené kanály - Discord, telefon.
+    Místo Trello byly nakonec pro plánování využité GitHub issues, jelikož umožňovaly přímo
+    komentovat jednotlivé commity a změny v projektu.
 
 Pravidla komunikace:
     Všichni členové kontrolovali a odpovídali na Discordu, v případě potřeby i na telefon.
