@@ -102,7 +102,7 @@ clean:
 	-rm $(CLEAN_FILES)
 	-rm ../ivs-calc_installer.deb
 	-rm ../stddev_installer.deb
-	-rm -r ../../$(PACK_DIR_NAME)
+	-rm -rf ../../$(PACK_DIR_NAME)
 	-rm ../../$(PACK_DIR_NAME).zip
 
 # uses `make all` when `make` is used
