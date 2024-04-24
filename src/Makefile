@@ -6,7 +6,7 @@
 # @date 2024-04-09
 #
 
-PACK_DIR_NAME = xhajekp00_xkodajj00_xnezbea00_xnovott00
+PACK_DIR_NAME = xnezbea00_xkodajj00_xnovott00_xhajekp00
 INTERPRETER = python3
 DEPS_LIST_FILEPATH = python_requirements.txt
 PIP = pip3
