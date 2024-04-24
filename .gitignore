@@ -9,3 +9,5 @@ installer/tmp
 installer/usr
 installer_stddev/usr
 installer_stddev/tmp
+ivs-calc_installer.deb
+stddev_installer.deb

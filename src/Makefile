@@ -82,6 +82,9 @@ create-install: calculatormathlib.py standard_deviation.py calculator.py $(DEPS_
 	@bash ./script_calc.sh
 	@bash ./script_stddev.sh
 
+mv-install: ../ivs-calc_installer.deb ../stddev_installer.deb
+    cp $^ ~/Desktop/
+
 # Removes ./__pychache__ directory, installer temporary directories,
 # generator test files, profiler output files
 clean:
