@@ -74,6 +74,8 @@ pack: doc create-install repo
 	cd ../.. && \
 	zip -r $(PACK_FILE_NAME) . # creates a zip of everything inside the repo
 
+repo: clean
+
 # Generates program documentation
 doc: Doxyfile calculatormathlib.py standard_deviation.py calculator.py
 	doxygen $<
@@ -82,8 +84,10 @@ create-install: calculatormathlib.py standard_deviation.py calculator.py $(DEPS_
 	@bash ./script_calc.sh
 	@bash ./script_stddev.sh
 
-mv-install: ../ivs-calc_installer.deb ../stddev_installer.deb
-    cp $^ ~/Desktop/
+# Copies over installers to Desktop for testing purpouses
+mv-install:
+	cp ../ivs-calc_installer.deb ~/Desktop/
+	cp ../stddev_installer.deb ~/Desktop/
 
 # Removes ./__pychache__ directory, installer temporary directories,
 # generator test files, profiler output files
