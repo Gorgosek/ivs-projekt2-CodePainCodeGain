@@ -71,6 +71,7 @@ help:
 
 # packs the entire project and leaves the .zip file at the same level as project folder
 pack: collect-dirs clean
+	@git clean -fxd
 	cp -a ../../ivs-projekt2-CodePainCodeGain ../../$(PACK_DIR_NAME)/repo
 	cd ../.. && zip -r $(PACK_DIR_NAME).zip $(PACK_DIR_NAME)
 
