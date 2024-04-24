@@ -78,8 +78,8 @@ pack: collect-dirs clean
 collect-dirs: clean doc install-create
 	mkdir ../../$(PACK_DIR_NAME)
 	cp -a ../doc ../../$(PACK_DIR_NAME)/doc
-	cp ../ivs-calc_installer.deb ../../$(PACK_DIR_NAME)/install
-	cp ../stddev_installer.deb ../../$(PACK_DIR_NAME)/install
+	cp ../ivs-calc_installer.deb ../../$(PACK_DIR_NAME)/install/
+	cp ../stddev_installer.deb ../../$(PACK_DIR_NAME)/install/
 
 # Generates program documentation
 doc: Doxyfile calculatormathlib.py standard_deviation.py calculator.py
@@ -102,6 +102,8 @@ clean:
 	-rm $(CLEAN_FILES)
 	-rm ../ivs-calc_installer.deb
 	-rm ../stddev_installer.deb
+	-rm -r ../../$(PACK_DIR_NAME)
+	-rm ../../$(PACK_DIR_NAME).zip
 
 # uses `make all` when `make` is used
 .DEFAULT_GOAL := all
