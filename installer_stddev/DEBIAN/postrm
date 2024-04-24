@@ -4,10 +4,12 @@ set -e
 
 if [ "$1" = "purge" ]; then
     rm -f /usr/local/bin/stddev
+	rm -rf /usr/share/stddev
 fi
 
 if [ "$1" = "remove" ]; then
     rm -f /usr/local/bin/stddev
+	rm -rf /usr/share/stddev
 fi
 
 exit 0
