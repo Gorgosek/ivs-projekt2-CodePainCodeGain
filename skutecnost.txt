@@ -1,0 +1,25 @@
+Skutečnost
+
+Časový plán:
+    Po zadání projektu proběhlo první setkání přes hovor, na kterém se domluvily termíny a rozdělení práce.
+    Zpočátku probíhalo dodržování termínů v souladu s plánem, postupem času se ale plnění termínů opožďovalo
+    z důvodu nedostatku času (projekty z ostatních předmětů). Ke konci se práce na projektu zintenzivnila a 
+    termíny se opět dohnaly.
+
+Rozdělení práce:
+    Všichni začali podle plánu (rozdělení na frontend a backend), ale nakonec se během vývoje tým spíše
+    soustředil na backend  (bylo na něm více práce než bylo předpokládáno). Více viz. hodnoceni.txt.
+
+Komunikační kanály:
+    Pro komunikaci byly bez problémů použity předem stanovené kanály - Discord, telefon.
+
+Pravidla komunikace:
+    Všichni členové kontrolovali a odpovídali na Discordu, v případě potřeby i na telefon.
+    Schůzky pro přezkoumání pokroku a plánování probíhaly v pondělí od 14:00 místo 17:00 pokud byly třeba.
+
+Systém pro správu verzí:
+    Byl využit GitHub podle plánu. Členové týmu, kteří ho neuměli používat se s ním naučili poměrně rychle.
+
+Unifikace implementačních detailů:
+    Vytvoření dokumentace proběhlo podle plánu. Struktura zdrojových kódů se dodržovala.
+    
