@@ -1,0 +1,18 @@
+#!/bin/sh
+
+set -e
+
+if [ "$1" = "purge" ]; then
+    rm -f /usr/local/bin/ivs-calc
+    pip3 uninstall -y numpy==1.26.4
+    pip3 uninstall -y PyQt6==6.4.2
+    pip3 uninstall -y sip==6.8.3
+    rm -f /tmp/python_requirements.txt
+fi
+
+if [ "$1" = "remove" ]; then
+    rm -f /usr/local/bin/ivs-calc
+fi
+
+
+exit 0
