@@ -6,7 +6,7 @@
 # @date 2024-04-09
 #
 
-PACK_FILE_NAME = xhajekp00_xkodajj00_xnezbea00_xnovott00
+PACK_DIR_NAME = xhajekp00_xkodajj00_xnezbea00_xnovott00
 INTERPRETER = python3
 DEPS_LIST_FILEPATH = python_requirements.txt
 PIP = pip3
@@ -70,17 +70,23 @@ help:
 	@echo ""
 
 # FIXME make it according to the assignment
-pack: doc create-install repo
-	cd ../.. && \
-	zip -r $(PACK_FILE_NAME) . # creates a zip of everything inside the repo
+pack: collect-dirs clean
+	cp -a ../../ivs-projekt2-CodePainCodeGain ../../$(PACK_DIR_NAME)/repo
+	zip -r 
 
-repo: clean
+# Gathers specified dirs needed to be handed in
+collect-dirs: clean doc install-create
+	mkdir ../../$(PACK_DIR_NAME)
+	cp -a ../doc ../../$(PACK_DIR_NAME)/doc
+	cp ../ivs-calc_installer.deb ../../$(PACK_DIR_NAME)/install
+	cp ../stddev_installer.deb ../../$(PACK_DIR_NAME)/install
 
 # Generates program documentation
 doc: Doxyfile calculatormathlib.py standard_deviation.py calculator.py
 	doxygen $<
 
-create-install: calculatormathlib.py standard_deviation.py calculator.py $(DEPS_LIST_FILEPATH) script_calc.sh script_stddev.sh
+# Runs scripts that create installers
+install-create: calculatormathlib.py standard_deviation.py calculator.py $(DEPS_LIST_FILEPATH) script_calc.sh script_stddev.sh
 	@bash ./script_calc.sh
 	@bash ./script_stddev.sh
 
@@ -94,6 +100,8 @@ mv-install:
 clean:
 	-rm -r $(CLEAN_DIRS)
 	-rm $(CLEAN_FILES)
+	-rm ../ivs-calc_installer.deb
+	-rm ../stddev_installer.deb
 
 # uses `make all` when `make` is used
 .DEFAULT_GOAL := all
