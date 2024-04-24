@@ -69,10 +69,10 @@ help:
 	@echo "================================================="
 	@echo ""
 
-# FIXME make it according to the assignment
+# packs the entire project and leaves the .zip file at the same level as project folder
 pack: collect-dirs clean
 	cp -a ../../ivs-projekt2-CodePainCodeGain ../../$(PACK_DIR_NAME)/repo
-	zip -r 
+	cd ../.. && zip -r $(PACK_DIR_NAME).zip $(PACK_DIR_NAME)
 
 # Gathers specified dirs needed to be handed in
 collect-dirs: clean doc install-create
