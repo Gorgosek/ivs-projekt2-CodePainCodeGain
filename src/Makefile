@@ -6,7 +6,7 @@
 # @date 2024-04-09
 #
 
-ZIP_FILE = xhajekp00_xkodajj00_xnezbea00_xnovott00.zip
+PACK_FILE_NAME = xhajekp00_xkodajj00_xnezbea00_xnovott00
 INTERPRETER = python3
 DEPS_LIST_FILEPATH = python_requirements.txt
 PIP = pip3
@@ -20,7 +20,7 @@ CLEAN_FILES = t1.txt t2.txt t3.txt profiling_stats
 all: run
 
 # Runs the program
-run: deps
+run: calculator.py deps 
 	$(INTERPRETER) calculator.py
 
 # Installs needed dependencies to run the program
@@ -28,11 +28,11 @@ deps:
 	$(PIP) install -r $(DEPS_LIST_FILEPATH)
 
 # Runs test for the calculator_mathlib
-test: 
+test: calculator_tests.py calculatormathlib.py 
 	$(INTERPRETER) -m unittest calculator_tests.py
 
 # Generates random input files for profiler
-gen:    
+gen: generate_nums.py   
 	$(INTERPRETER) generate_nums.py 10 > t1.txt
 	$(INTERPRETER) generate_nums.py 1000 > t2.txt
 	$(INTERPRETER) generate_nums.py 1000000 > t3.txt
@@ -40,7 +40,7 @@ gen:
 # Installs dependencies runs stddev on test data and cleans test files
 profile: deps profile-run clean
 
-profile-run: gen
+profile-run: standard_deviation.py gen
 	$(INTERPRETER) standard_deviation.py < t1.txt
 	$(INTERPRETER) standard_deviation.py < t2.txt
 	$(INTERPRETER) standard_deviation.py < t3.txt
@@ -58,7 +58,7 @@ profile-run: gen
 # $(INTERPRETER) ../np_standard_deviation.py < t5.txt
 # $(INTERPRETER) check_std_correctness.py < t5.txt
 
-# TODO also add later
+# Prints out prerequisities instructions
 help:
 	@echo ""
 	@echo "======================HELP:======================"
@@ -70,19 +70,23 @@ help:
 	@echo ""
 
 # FIXME make it according to the assignment
-pack:
-	cd .. && \
-	zip -r $(ZIP_FILE) . # creates a zip of everything inside the repo
+pack: doc create-install repo
+	cd ../.. && \
+	zip -r $(PACK_FILE_NAME) . # creates a zip of everything inside the repo
 
 # Generates program documentation
-doc:
-	doxygen Doxyfile
+doc: Doxyfile calculatormathlib.py standard_deviation.py calculator.py
+	doxygen $<
 
-# Removes ./__pychache__ directory
+create-install: calculatormathlib.py standard_deviation.py calculator.py $(DEPS_LIST_FILEPATH) script_calc.sh script_stddev.sh
+	@bash ./script_calc.sh
+	@bash ./script_stddev.sh
+
+# Removes ./__pychache__ directory, installer temporary directories,
+# generator test files, profiler output files
 clean:
 	-rm -r $(CLEAN_DIRS)
 	-rm $(CLEAN_FILES)
-	-rm 
 
 # uses `make all` when `make` is used
 .DEFAULT_GOAL := all
