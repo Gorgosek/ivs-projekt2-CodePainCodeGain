@@ -2,7 +2,6 @@
 # @file Makefile
 #
 # @brief runs or compiles necesarry files 
-#
 # @author Adam Nezbeda
 # @date 2024-04-09
 #
@@ -11,7 +10,7 @@ ZIP_FILE = xhajekp00_xkodajj00_xnezbea00_xnovott00.zip
 INTERPRETER = python3
 DEPS_LIST_FILEPATH = python_requirements.txt
 PIP = pip3
-CLEAN_DIRS = __pycache__
+CLEAN_DIRS = __pycache__ ../installer/tmp/ ../installer/usr/ ../installer_stddev/usr/ ../doc/
 # Generated files
 CLEAN_FILES = t1.txt t2.txt t3.txt profiling_stats
 
@@ -28,16 +27,17 @@ run: deps
 deps:
 	$(PIP) install -r $(DEPS_LIST_FILEPATH)
 
-# runs test for the calculator_mathlib
-# TODO add test for standard deviation
+# Runs test for the calculator_mathlib
 test: 
 	$(INTERPRETER) -m unittest calculator_tests.py
 
+# Generates random input files for profiler
 gen:    
 	$(INTERPRETER) generate_nums.py 10 > t1.txt
 	$(INTERPRETER) generate_nums.py 1000 > t2.txt
 	$(INTERPRETER) generate_nums.py 1000000 > t3.txt
 
+# Installs dependencies runs stddev on test data and cleans test files
 profile: deps profile-run clean
 
 profile-run: gen
@@ -60,7 +60,14 @@ profile-run: gen
 
 # TODO also add later
 help:
-	###
+	@echo ""
+	@echo "======================HELP:======================"
+	@echo "Prerequisities: python3, python3-pip (pip3)"
+	@echo "Install on ubuntu23:"
+	@echo "- $ sudo apt-get update"
+	@echo "- $ sudo apt-get install python3 python3-pip"
+	@echo "================================================="
+	@echo ""
 
 # FIXME make it according to the assignment
 pack:
@@ -75,6 +82,7 @@ doc:
 clean:
 	-rm -r $(CLEAN_DIRS)
 	-rm $(CLEAN_FILES)
+	-rm 
 
 # uses `make all` when `make` is used
 .DEFAULT_GOAL := all
