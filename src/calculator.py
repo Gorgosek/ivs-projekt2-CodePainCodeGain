@@ -938,6 +938,11 @@ class Ui_MainWindow(object):
         # If the user tries write something after factorial or second power, return
         if currentTextInSecondLabel.endswith('!') or currentTextInSecondLabel.endswith('^2'):
             return
+        
+        # If the user tries to add a square root and there is nothing in the label, return
+        if pressed == '²√' and not currentTextInSecondLabel:
+            self.label_SecondLabel.setText(f'{pressed}')
+            return
 
         # If the second label is empty and the pressed button is an operator, than set to second label a minus 
         if pressed == '-' and not currentTextInSecondLabel:
